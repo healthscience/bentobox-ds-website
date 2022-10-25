@@ -5,6 +5,7 @@
       <Bbox-learn></Bbox-learn>
       <!-- <Bbox-toolkits></Bbox-toolkits> -->
       <Bbox-usecases></Bbox-usecases>
+      <Bbox-concept></Bbox-concept>
     </div>
   </v-container>
 </template>
@@ -14,6 +15,7 @@ import BentoBox from '@/components/BentoBox'
 import BboxLearn from '@/components/BboxLearn'
 // import BboxToolkits from '@/components/BboxToolkits'
 import BboxUsecases from '@/components/BboxUsecases'
+import BboxConcept from '@/components/BboxConcept'
 
 export default {
   name: 'Bentobox-Content',
@@ -21,7 +23,8 @@ export default {
     BentoBox,
     BboxLearn,
     // BboxToolkits,
-    BboxUsecases
+    BboxUsecases,
+    BboxConcept
   }
 }
 </script>
