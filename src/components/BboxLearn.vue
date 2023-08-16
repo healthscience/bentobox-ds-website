@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-lg>
     <v-layout row>
-        <v-flex xs12 class="text-xs-center display-1 font-weight-black my-5 color blue lighten-5">Peer to Peer Data Science</v-flex>
+        <v-flex xs12 class="text-xs-center display-1 font-weight-black my-5 color blue lighten-5">Sovereign Data that shapes health</v-flex>
     </v-layout>
     <v-layout row center>
         <v-spacer />
@@ -18,13 +18,25 @@
     </v-layout>
     <v-layout row>
       <v-spacer />
-      <v-flex xs12 sm12 md8>
-        <v-card>
+      <v-flex xs12 sm6 md4>
+        <v-card min-height="300">
           <v-card-title primary-title>
             <div>
-              <header>Features</header>
+              <header>Toolkit</header>
               <div style="word-break: break-word" class="spacing-playground pa-4">
-                The BentoBox Data Science Toolkit is a graphical interface to chart and visualise data without the need for coding.  Collaborate peer to peer using the <a href="https://www.healthscience.network">health oracle protocol</a>.
+                The BentoBox-DS Toolkit is a graphical interface to chart and visualise data without the need for coding.  Collaborate or coordinate machine learning peer to peer using the <a href="https://www.healthscience.network">health oracle protocol</a>.
+              </div>
+            </div>
+          </v-card-title>
+        </v-card>
+      </v-flex>
+      <v-flex xs12 sm6 md4>
+        <v-card min-height="300">
+          <v-card-title primary-title>
+            <div>
+              <header>BentoBox-Creators</header>
+              <div style="word-break: break-word" class="spacing-playground pa-4">
+                DS Creators or data scientist can design layouts and analysis templates that peers can bring to life by uploading data.
               </div>
             </div>
           </v-card-title>

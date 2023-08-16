@@ -2,10 +2,10 @@
   <v-container fluid fill-height>
     <div class="hop-waves">
       <bento-box></bento-box>
-      <Bbox-learn></Bbox-learn>
+      <bbox-learn></bbox-learn>
       <!-- <Bbox-toolkits></Bbox-toolkits> -->
-      <Bbox-usecases></Bbox-usecases>
-      <Bbox-concept></Bbox-concept>
+      <bbox-usecases></bbox-usecases>
+      <bbox-concept></bbox-concept>
     </div>
   </v-container>
 </template>
