@@ -1,33 +1,54 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Terms from '../views/Terms.vue'
-import Checksum from '../views/Checksum.vue'
-
-Vue.use(VueRouter)
+// Composables
+import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    component: () => import('@/views/Home.vue'),
+    children: [
+      {
+        path: '',
+        name: 'Home',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
+      },
+    ],
   },
   {
     path: '/terms',
-    name: 'Terms',
-    component: Terms
+    component: () => import('@/views/Terms.vue'),
+    children: [
+      {
+        path: '',
+        name: 'Health',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "home" */ '@/views/Terms.vue'),
+      },
+    ],
   },
   {
     path: '/checksum',
-    name: 'Checksum',
-    component: Checksum
+    component: () => import('@/views/Checksum.vue'),
+    children: [
+      {
+        path: '',
+        name: 'Creators',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "home" */ '@/views/Checksum.vue'),
+      },
+    ],
   }
 ]
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
 })
 
 export default router

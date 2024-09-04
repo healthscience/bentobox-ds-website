@@ -1,62 +1,48 @@
 <template>
   <v-container grid-list-lg>
-    <v-layout row>
-        <v-flex xs12 class="text-xs-center display-1 font-weight-black my-5 color blue lighten-5">Sovereign Data that shapes health</v-flex>
-    </v-layout>
-    <v-layout row center>
-        <v-spacer />
-        <v-flex xs12 sm12 md5 class="open-left">
-          <v-img src="../assets/bbtoolkit.png" max-width="500" class="left-perspective">
-          </v-img>
-        </v-flex>
-        <v-flex xs12 sm12 md5 class="open-right">
-          <!-- <v-img src="../assets/bbdds.png" max-width="500" class="right-perspective">
-          </v-img> -->
+    <v-responsive class="d-flex align-top text-center fill-height">
+      <v-row
+        no-gutters
+        id="learn"
+      >
+        <v-col
+          align-self="center"
+          xs="12"
+          sm="12"
+          md="12"
+        >
+          <v-sheet class="text-h6 pa-2" color="blue-darken-4">BentoBoxDS -- Sovereign Data that shapes health</v-sheet>
+        </v-col>
+      </v-row>
+      <v-row
+        no-gutters
+      >
+        <v-col
+          align-self="center"
+          xs="12"
+          sm="6"
+          md="6"
+        >
+          <v-card class="open-left">
+            <v-img src="../assets/bbtoolkit.png" max-width="500" class="left-perspective">
+            </v-img>
+          </v-card>
+        </v-col>
+        <v-col
+          align-self="center"
+          xs="12"
+          sm="6"
+          md="6"
+        >
+          <v-card color="indigo-lighten-5 ma-2">
+            <v-card-title primary-title>
+              <h3 class="pa-2 m-1">Alpha II experimental release</h3>      
+            </v-card-title> 
+          </v-card>
           <download-toolkit></download-toolkit>
-        </v-flex>
-        <v-spacer />
-    </v-layout>
-    <v-layout row>
-      <v-spacer />
-      <v-flex xs12 sm6 md4>
-        <v-card min-height="300">
-          <v-card-title primary-title>
-            <div>
-              <header>Toolkit</header>
-              <div style="word-break: break-word" class="spacing-playground pa-4">
-                The BentoBox-DS Toolkit is a graphical interface to chart and visualise data without the need for coding.  Collaborate or coordinate machine learning peer to peer using the <a href="https://www.healthscience.network">health oracle protocol</a>.
-              </div>
-            </div>
-          </v-card-title>
-        </v-card>
-      </v-flex>
-      <v-flex xs12 sm6 md4>
-        <v-card min-height="300">
-          <v-card-title primary-title>
-            <div>
-              <header>BentoBox-Creators</header>
-              <div style="word-break: break-word" class="spacing-playground pa-4">
-                DS Creators or data scientist can design layouts and analysis templates that peers can bring to life by uploading data.
-              </div>
-            </div>
-          </v-card-title>
-        </v-card>
-      </v-flex>
-      <v-spacer />
-    </v-layout>
-    <v-layout row>
-      <v-spacer />
-      <v-flex xs12 sm12 md8>
-        <v-card>
-          <v-card-title primary-title>
-            <div>Demo
-              <iframe width="500" height="315" src="https://www.youtube.com/embed/OZXilez2hK8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-          </v-card-title>
-        </v-card>
-      </v-flex>
-      <v-spacer />
-    </v-layout>
+        </v-col>
+      </v-row>
+    </v-responsive>
   </v-container>
 </template>
 

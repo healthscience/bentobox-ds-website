@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: 'TruthPublic'
+  name: 'bentobox'
 }
 </script>
 

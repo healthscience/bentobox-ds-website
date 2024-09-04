@@ -1,10 +1,12 @@
 <template>
   <v-container grid-list-lg>
-    <v-layout>
-      <v-flex xs12 sm12 md12>
+    <v-responsive class="d-flex align-top text-center fill-height">
+      <v-col
+        align-self="center"
+      >
         <v-card class="back-transparent">
           <v-card-title primary-title>
-            <v-flex xs12 sm12 md12>
+            <v-col>
                  <v-row
                   align="center"
                   justify="center"
@@ -17,26 +19,26 @@
                       <v-btn
                         color="success"
                         class="mt-12"
-                        @click="overlay = !overlay"
+                        @click="downloadSelect()"
                       >
-                        Get-ALPHA--{{ userOs }}
+                        Get-ALPHA--II {{ userOs }}
                         <div id="nocodeavaiable" v-if="oscodemiss === true">
                           Code NOT available
                         </div>
                       </v-btn>
-                      <p class="subtitle-1">AI agents coming soon</p>
+                      <p class="subtitle-1">beta coming Dec 2024</p>
                       <v-overlay
-                        :absolute="absolute"
-                        :value="overlay"
+                        v-model="overlay"
+                        class="align-center justify-center"
                         color="#29B6F6"
                       >
                         <v-btn
                           color="success"
-                          @click="downloadLink"
+                          @click="downloadLink()"
                           height="80px"
                         >
                           <div id="downloadsection" class="download-message">
-                            Download-ALPHA--{{ userOs }}
+                            Download-ALPHA II--{{ userOs }}
                             <v-icon class="downloadicon"
                               large
                               color="orange darken-2"
@@ -58,11 +60,11 @@
                     </v-row>
                   </v-card>
                 </v-row>
-            </v-flex>
+            </v-col>
           </v-card-title>
         </v-card>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-responsive>
   </v-container>
 </template>
 
@@ -91,16 +93,23 @@ export default {
         this.oscodemiss = false
       }
     },
+    downloadSelect () {
+      console.log('download select')
+      this.overlay = !this.overlay
+      console.log(this.overlay)
+    },
     downloadLink () {
+      console.log('downlaod click')
+      console.log(this.userOs)
       // which os for download?
       if (this.userOs === 'Linux x86_64') {
         this.oscodemiss = true
-        window.open('https://github.com/healthscience/diyhstoolkit/releases/download/v0.7.6/BentoBox-x86_64.AppImage', '_blank')
+        window.open('https://github.com/healthscience/bentoboxds/releases/download/v0.1.5/bentoboxds-0.1.5.AppImage', '_blank')
       } else if (this.userOs === 'IOS') {
         this.oscodemiss = true
         window.open('#', '_blank')
       } else if (this.userOs === 'Win32') {
-        window.open('https://github.com/healthscience/diyhstoolkit/releases/download/v0.7.6/BentoBox-DS-alpha.exe', '_blank')
+        window.open('https://github.com/healthscience/bentoboxds/releases/download/v0.1.5/bentoboxds-0.1.5-win-setup.exe', '_blank')
         this.oscodemiss = true
       }
     }

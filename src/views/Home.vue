@@ -3,30 +3,22 @@
     <div class="hop-waves">
       <bento-box></bento-box>
       <bbox-learn></bbox-learn>
-      <!-- <Bbox-toolkits></Bbox-toolkits> -->
+      <network-board></network-board>
+      <bbox-features></bbox-features>
       <bbox-usecases></bbox-usecases>
-      <bbox-concept></bbox-concept>
+      <Bbox-concept></Bbox-concept>
     </div>
   </v-container>
 </template>
 
-<script>
+<script setup>
 import BentoBox from '@/components/BentoBox'
+import NetworkBoard from '@/components/networkBoards'
 import BboxLearn from '@/components/BboxLearn'
-// import BboxToolkits from '@/components/BboxToolkits'
+import BboxFeatures from '@/components/BboxFeatures'
 import BboxUsecases from '@/components/BboxUsecases'
 import BboxConcept from '@/components/BboxConcept'
 
-export default {
-  name: 'Bentobox-Content',
-  components: {
-    BentoBox,
-    BboxLearn,
-    // BboxToolkits,
-    BboxUsecases,
-    BboxConcept
-  }
-}
 </script>
 
 <style>
