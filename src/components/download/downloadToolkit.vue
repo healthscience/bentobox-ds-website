@@ -94,13 +94,10 @@ export default {
       }
     },
     downloadSelect () {
-      console.log('download select')
       this.overlay = !this.overlay
       console.log(this.overlay)
     },
     downloadLink () {
-      console.log('downlaod click')
-      console.log(this.userOs)
       // which os for download?
       if (this.userOs === 'Linux x86_64') {
         this.oscodemiss = true
