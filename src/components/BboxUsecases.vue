@@ -3,9 +3,9 @@
         <v-responsive class="d-flex align-top text-center fill-height">
         <v-row
          no-gutters
-         id="learn"
+         id="usecases"
         >
-            <v-col class="text-h6 pa-2" color="blue-darken-4"">Usecases</v-col>
+            <v-col class="text-h6 pa-2" color="blue-darken-4">Usecases</v-col>
         </v-row>
         <v-row row wrap>
             <v-col
