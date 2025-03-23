@@ -21,12 +21,12 @@
                         class="mt-12"
                         @click="downloadSelect()"
                       >
-                        Get-ALPHA--II {{ userOs }}
+                        Get-BETA {{ userOs }}
                         <div id="nocodeavaiable" v-if="oscodemiss === true">
                           Code NOT available
                         </div>
                       </v-btn>
-                      <p class="subtitle-1">beta coming Dec 2024</p>
+                      <p class="subtitle-1"></p>
                       <v-overlay
                         v-model="overlay"
                         class="align-center justify-center"
@@ -38,7 +38,7 @@
                           height="80px"
                         >
                           <div id="downloadsection" class="download-message">
-                            Download-ALPHA II--{{ userOs }}
+                            Download-BETA--{{ userOs }}
                             <v-icon class="downloadicon"
                               large
                               color="orange darken-2"
@@ -101,12 +101,12 @@ export default {
       // which os for download?
       if (this.userOs === 'Linux x86_64') {
         this.oscodemiss = true
-        window.open('https://github.com/healthscience/bentoboxds/releases/download/v0.1.5/bentoboxds-0.1.5.AppImage', '_blank')
+        window.open('https://github.com/healthscience/bentoboxds/releases/download/v0.2.6/bentoboxds-0.2.6.AppImage', '_blank')
       } else if (this.userOs === 'IOS') {
         this.oscodemiss = true
-        window.open('#', '_blank')
+        window.open('https://github.com/healthscience/bentoboxds/releases/download/v0.2.6/bentoboxds-0.2.6-macos.dmg', '_blank')
       } else if (this.userOs === 'Win32') {
-        window.open('https://github.com/healthscience/bentoboxds/releases/download/v0.1.5/bentoboxds-0.1.5-win-setup.exe', '_blank')
+        window.open('https://github.com/healthscience/bentoboxds/releases/download/v0.2.6/bentoboxds-0.2.6-win-setup.exe', '_blank')
         this.oscodemiss = true
       }
     }

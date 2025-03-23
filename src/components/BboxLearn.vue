@@ -11,7 +11,7 @@
           sm="12"
           md="12"
         >
-          <v-sheet class="text-h6 pa-2" color="blue-darken-4">BentoBoxDS -- Sovereign Data that shapes health</v-sheet>
+          <v-sheet class="text-h6 pa-2" color="blue-darken-4">BentoBoxDS -- Sovereign Intelligences that shapes health</v-sheet>
         </v-col>
       </v-row>
       <v-row
