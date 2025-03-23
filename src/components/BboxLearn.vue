@@ -36,7 +36,7 @@
         >
           <v-card color="indigo-lighten-5 ma-2">
             <v-card-title primary-title>
-              <h3 class="pa-2 m-1">Alpha II experimental release</h3>      
+              <h3 class="pa-2 m-1">BETA experimental release</h3>      
             </v-card-title> 
           </v-card>
           <download-toolkit></download-toolkit>
