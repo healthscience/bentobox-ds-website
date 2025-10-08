@@ -184,7 +184,7 @@ export default {
   data: () => ({
       featureOverlay: false,
       sourceVideo: 'https://www.youtube.com/embed/cXQcSB4hLfA?si=8JtliJWGxJpJ0HIN',
-      rumbleEmbedCode: '<iframe src="https://rumble.com/v6zxnkm-body-composition-withings-scale-with-bentoboxds.html" width="640" height="360" frameborder="0" allowfullscreen></iframe>'
+      rumbleEmbedCode: '<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;"><iframe src="https://rumble.com/embed/v6xqx22/" style="top: 0; left: 0; width: 100%; height: 100%; position: absolute; border: 0;" allowfullscreen scrolling="no" allow="encrypted-media *; fullscreen *;"></iframe></div>'
   }),
   methods: {
     videBentoBoxDSvideo (videoURL) {
