@@ -7,7 +7,7 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col>
+        <v-col class="border border-e-lg">
           <v-card>
             <v-card-title primary-title>
               <div>
@@ -32,8 +32,8 @@
           </v-card>
         </v-col>
       </v-row>
-      <v-row>
-        <v-col>
+      <v-row class="border border-t-lg">
+        <v-col class="border border-e-lg">
           <v-card>
             <v-card-title primary-title>
               <div>

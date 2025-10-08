@@ -4,6 +4,7 @@
       <bento-box></bento-box>
       <bbox-learn></bbox-learn>
       <network-board></network-board>
+      <bbox-vision></bbox-vision>
       <bbox-features></bbox-features>
       <bbox-usecases></bbox-usecases>
       <Bbox-concept></Bbox-concept>
@@ -15,6 +16,7 @@
 import BentoBox from '@/components/BentoBox'
 import NetworkBoard from '@/components/networkBoards'
 import BboxLearn from '@/components/BboxLearn'
+import BboxVision from '@/components/BboxVision'
 import BboxFeatures from '@/components/BboxFeatures'
 import BboxUsecases from '@/components/BboxUsecases'
 import BboxConcept from '@/components/BboxConcept'

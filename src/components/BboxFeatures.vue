@@ -11,7 +11,7 @@
         </v-col>
         <v-card color="indigo-lighten-5 ma-2">
           <div style="word-break: break-word" class="spacing-playground pa-3 text-justify">
-            The BentoBoxDS toolkit is a graphical interface to chart and visualise data without the need for coding.  Collaborate and coordinate N=1 experiment / machine learning peer to peer using the <a href="https://www.healthscience.network">health oracle protocol</a>
+            The BentoBoxDS toolkit for interacting with HOP, the Health Oracle Protocol. Each peer has an autonomous agent beebee to support and create charting to simulations to machine learning with peers. beebee helps manage Besearch cycles of  N=1 experiment plus machine learning peer to peer using the <a href="https://www.healthscience.network">health oracle protocol</a> to attain health at human, bioregion or Earth scales.
           </div>
         </v-card>
       </v-row>
@@ -73,10 +73,10 @@
         <v-col justify>
           <v-card color="indigo-lighten-5" class="ma-2">
             <v-card-title primary-title>
-              <h3 class="pa-2 m-1">Chat charting</h3>      
+              <h3 class="pa-2 m-1">a bentobox chart</h3>      
             </v-card-title> 
             <div style="word-break: break-word" class="spacing-playground pa-3 text-justify">
-              The toolkit chatbot, BeeBee can be prompted with the "chart" keyword to chart data directly e.g. chart 1 2 3 or via the keyword upload to add e.g. csv file.  BeeBee will also collaborate with other AI's e.g a LLM or evolutionary algorithms.
+              The toolkit chatbot, beebee can be prompted with the "chart" keyword to chart data directly e.g. chart 1 2 3 or via the keyword upload to add e.g. csv file.  BeeBee will also collaborate with other AI's e.g a LLM or evolutionary algorithms.
             </div>
             <v-btn
               color="success"
@@ -160,7 +160,8 @@
           <v-card>
             <v-card-title primary-title>
               <div>Demo
-                <iframe width="500" height="315" src="https://www.youtube.com/embed/OZXilez2hK8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <div v-html="rumbleEmbedCode"></div>
+                <!--<iframe width="500" height="315" src="https://www.youtube.com/embed/OZXilez2hK8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
               </div>
             </v-card-title>
           </v-card>
@@ -176,9 +177,14 @@
 
 export default {
   name: 'features',
+  mounted() {
+    // Set the cookie with the correct SameSite attribute
+    document.cookie = "RNSC=value; SameSite=None; Secure";
+  },
   data: () => ({
       featureOverlay: false,
-      sourceVideo: 'https://www.youtube.com/embed/cXQcSB4hLfA?si=8JtliJWGxJpJ0HIN'
+      sourceVideo: 'https://www.youtube.com/embed/cXQcSB4hLfA?si=8JtliJWGxJpJ0HIN',
+      rumbleEmbedCode: '<iframe src="https://rumble.com/v6zxnkm-body-composition-withings-scale-with-bentoboxds.html" width="640" height="360" frameborder="0" allowfullscreen></iframe>'
   }),
   methods: {
     videBentoBoxDSvideo (videoURL) {

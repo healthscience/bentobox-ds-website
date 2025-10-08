@@ -101,12 +101,12 @@ export default {
       // which os for download?
       if (this.userOs === 'Linux x86_64') {
         this.oscodemiss = true
-        window.open('https://github.com/healthscience/bentoboxds/releases/download/v0.2.6/bentoboxds-0.2.6.AppImage', '_blank')
+        window.open('https://github.com/healthscience/bentoboxds/releases/download/v0.4.1/bentoboxds-0.4.1.AppImage', '_blank')
       } else if (this.userOs === 'IOS') {
         this.oscodemiss = true
-        window.open('https://github.com/healthscience/bentoboxds/releases/download/v0.2.6/bentoboxds-0.2.6-macos.dmg', '_blank')
+        window.open('https://github.com/healthscience/bentoboxds/releases/download/v0.4.1/bentoboxds-0.4.1.dmg', '_blank')
       } else if (this.userOs === 'Win32') {
-        window.open('https://github.com/healthscience/bentoboxds/releases/download/v0.2.6/bentoboxds-0.2.6-win-setup.exe', '_blank')
+        window.open('https://github.com/healthscience/bentoboxds/releases/download/v0.4.1/bentoboxds-0.4.1-win-setup.exe', '_blank')
         this.oscodemiss = true
       }
     }
