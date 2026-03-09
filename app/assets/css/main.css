@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forest-deep: #0B1F11;
+  --color-moss-light: #8A9A5B;
+  --color-slate-ghost: #2F3E46;
+  --color-resonance-glow: #00FFC2;
+
+  --font-mono: "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace";
+  --font-serif: "ui-serif", "Georgia", "Cambria", "Times New Roman", "Times", "serif";
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-forest-deep);
+    color: white;
+  }
+}
