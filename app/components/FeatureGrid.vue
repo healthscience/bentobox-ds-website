@@ -1,11 +1,17 @@
 <template>
-  <div class="bg-black py-24 px-6">
+  <div class="bg-[var(--bg-primary)] py-24 px-6 transition-colors duration-300">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl font-serif text-white mb-16 text-center">The Life-Strap Gallery. Select an instrument. Clone it. Anchor it.</h2>
+      <h2 class="text-4xl font-serif text-[var(--text-primary)] mb-16 text-center">The Life-Strap Gallery. Select an instrument. Clone it. Anchor it.</h2>
+      <p class="network-status text-[var(--text-secondary)] mb-12 text-center">
+        The Network is Initializing.
+        The Health Oracle Protocol is currently a silent Orrery. Sovereignty requires a baseline of zero to ensure uncorrupted data. These four Life-Straps are reference blueprints. A Peer clones a module, calibrates the geometry, and contributes a pulse to the weave.
+
+        Join the resonance.```
+      </p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div v-for="feature in features" :key="feature.title" 
              @click="selectedFeature = feature"
-             class="p-8 border transition-all cursor-pointer group bg-forest-deep/50"
+             class="p-8 border transition-all cursor-pointer group bg-[var(--bg-primary)]/50"
              :class="[
                selectedFeature?.title === feature.title 
                ? 'border-resonance-glow ring-1 ring-resonance-glow' 
@@ -16,10 +22,10 @@
                  :class="[
                    selectedFeature?.title === feature.title 
                    ? 'text-resonance-glow' 
-                   : 'text-moss-light group-hover:text-resonance-glow'
+                   : 'text-[var(--text-secondary)] group-hover:text-resonance-glow'
                  ]" />
-          <h3 class="text-xl font-serif text-white mb-4">{{ feature.title }}</h3>
-          <p class="text-sm font-mono text-moss-light leading-relaxed">
+          <h3 class="text-xl font-serif text-[var(--text-primary)] mb-4">{{ feature.title }}</h3>
+          <p class="text-sm font-mono text-[var(--text-secondary)] leading-relaxed">
             {{ feature.description }}
           </p>
         </div>
@@ -34,12 +40,12 @@
         leave-from-class="transform translate-y-0 opacity-100"
         leave-to-class="transform translate-y-4 opacity-0"
       >
-        <div v-if="selectedFeature" class="mt-16 p-8 border border-resonance-glow bg-forest-deep/30 backdrop-blur-sm">
+        <div v-if="selectedFeature" class="mt-16 p-8 border border-resonance-glow bg-[var(--bg-primary)]/30 backdrop-blur-sm">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h4 class="text-2xl font-serif text-white mb-6">{{ selectedFeature.title }} Details</h4>
-              <div class="prose prose-invert prose-moss max-w-none">
-                <p class="text-moss-light font-mono leading-relaxed mb-6">
+              <h4 class="text-2xl font-serif text-[var(--text-primary)] mb-6">{{ selectedFeature.title }} Details</h4>
+              <div class="prose prose-moss max-w-none">
+                <p class="text-[var(--text-secondary)] font-mono leading-relaxed mb-6">
                   {{ selectedFeature.longDescription }}
                 </p>
                 <ul class="space-y-3">
@@ -56,7 +62,7 @@
               </div>
               <div v-else-if="selectedFeature.mediaType === 'video'" class="w-full h-full flex items-center justify-center">
                 <!-- Placeholder for video -->
-                <div class="text-moss-light font-mono text-xs flex flex-col items-center">
+                <div class="text-[var(--text-secondary)] font-mono text-xs flex flex-col items-center">
                   <UIcon name="i-heroicons-play-circle" class="w-16 h-16 mb-4 text-resonance-glow animate-pulse" />
                   [ VIDEO STREAM: {{ selectedFeature.mediaUrl }} ]
                 </div>

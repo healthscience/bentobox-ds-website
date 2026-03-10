@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-forest-deep py-24 px-6">
+  <div class="bg-[var(--bg-primary)] py-24 px-6 transition-colors duration-300">
     <div class="max-w-4xl mx-auto relative">
       <!-- Timeline Line -->
       <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-slate-ghost -translate-x-1/2 hidden md:block"></div>
@@ -11,9 +11,9 @@
         <!-- Content -->
         <div class="w-full md:w-1/2 p-8" :class="index % 2 === 0 ? 'md:text-right' : 'md:text-left'">
           <h3 class="text-3xl font-serif text-resonance-glow mb-4">{{ demo.title }}</h3>
-          <p class="text-lg font-mono text-moss-light mb-6">{{ demo.description }}</p>
-          <div class="p-4 border border-slate-ghost rounded bg-black/20 backdrop-blur-sm">
-            <p class="text-sm text-white/60 italic">{{ demo.feature }}</p>
+          <p class="text-lg font-mono text-[var(--text-secondary)] mb-6">{{ demo.description }}</p>
+          <div class="p-4 border border-slate-ghost rounded bg-[var(--bg-primary)]/20 backdrop-blur-sm">
+            <p class="text-sm text-[var(--text-primary)]/60 italic">{{ demo.feature }}</p>
           </div>
         </div>
 

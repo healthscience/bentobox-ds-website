@@ -5,7 +5,10 @@
         Gaia Inintelligences shape health 
       </h1>
       <p class="text-xl md:text-2xl font-mono text-moss-light max-w-2xl mx-auto">
-        A Biological Navigation System for Sovereign Health. Start Pulsing with your own rhythm, sync your energy to the solar cycle, and build peer-to-peer coherence from the cell to the bioregion.
+        BentoBoxDS: The Peer Specification
+A Biological Navigation System for Sovereign Health.
+
+Pulsing starts with an individual resonance. Energy syncs to the solar cycle. Peer-to-peer coherence builds—from the cell to the bioregion.
       </p>
     </div>
 

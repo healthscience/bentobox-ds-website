@@ -39,11 +39,20 @@ export default defineNuxtConfig({
     // Nuxt UI 3 options
   },
 
+  colorMode: {
+    classSuffix: '-mode',
+    preference: 'dark',
+    fallback: 'dark'
+  },
+
   app: {
     head: {
       title: 'BentoBoxDS | Gaming Engine for Life',
       meta: [
-        { name: 'description', content: 'BentoBoxDS is the Gaming Engine for Life. Trade p-statistics for the warmth of the ResonancePulse.' }
+        { name: 'description', content: 'BentoBoxDS is biological navigation tool for Life.' }
+      ],
+      script: [
+        { src: '/js/heli-clock.js' }
       ]
     }
   }
