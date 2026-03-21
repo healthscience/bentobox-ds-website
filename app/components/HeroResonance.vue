@@ -1,15 +1,25 @@
 <template>
-  <div class="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-forest-deep">
-    <div class="relative z-10 text-center mb-12">
-      <h1 class="text-5xl md:text-7xl font-serif text-white mb-4">
-        Gaia Inintelligences shape health 
+  <div class="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 overflow-hidden bg-forest-deep">
+    <div class="relative z-10 text-center mb-12 px-4">
+      <h1 class="text-5xl md:text-7xl font-serif text-white mb-6">
+        Gaia Intelligences shape health 
       </h1>
-      <p class="text-xl md:text-2xl font-mono text-moss-light max-w-2xl mx-auto">
-        BentoBoxDS: The Peer Specification
-A Biological Navigation System for Sovereign Health.
+      
+      <div class="max-w-3xl mx-auto space-y-8">
+        <p class="text-resonance-glow font-mono tracking-widest uppercase text-sm md:text-base">
+          The Opening Call
+        </p>
 
-Pulsing starts with an individual resonance. Energy syncs to the solar cycle. Peer-to-peer coherence builds—from the cell to the bioregion.
-      </p>
+        <div class="text-xl md:text-2xl font-mono text-moss-light space-y-6 leading-relaxed">
+          <p>
+            At the dawn of super-intelligence, we choose another way: a living map traced by the breath of each Peer, where Gaia intelligences guide every cell toward sovereign health.
+          </p>
+
+          <p>
+            Entering BentoBoxDS is like stepping onto an uncharted continent. It is a Biological Navigation System that empowers sovereign health—letting every Peer tune into the planetary rhythm and turning personal, community, and bioregion health into a shared, measurable pulse of the Earth.
+          </p>
+        </div>
+      </div>
     </div>
 
     <div class="relative w-96 h-96 flex items-center justify-center cursor-pointer" @mouseenter="isHovered = true" @mouseleave="isHovered = false">

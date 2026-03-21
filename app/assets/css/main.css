@@ -21,13 +21,15 @@
     --text-primary: white;
     --text-secondary: var(--color-moss-light);
     --nav-bg: rgba(11, 31, 17, 0.5);
+    --nav-text: var(--color-moss-light);
   }
 
   .light-mode {
     --bg-primary: var(--color-meadow-light);
     --text-primary: var(--color-forest-soft);
     --text-secondary: var(--color-moss-dark);
-    --nav-bg: rgba(232, 245, 233, 0.5);
+    --nav-bg: rgba(255, 255, 255, 0.8);
+    --nav-text: var(--color-forest-deep);
   }
 
   html {

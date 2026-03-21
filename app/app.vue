@@ -6,7 +6,7 @@
         <span class="font-serif text-xl tracking-tight">BentoBoxDS</span>
       </div>
       <div class="flex items-center gap-8">
-        <div class="hidden md:flex gap-8 font-mono text-xs text-[var(--text-secondary)]">
+        <div class="hidden md:flex gap-8 font-mono text-xs text-[var(--nav-text)]">
           <a href="#hero" class="hover:text-resonance-glow transition-colors">ORACLE</a>
           <a href="#log" class="hover:text-resonance-glow transition-colors">beebee</a>
           <a href="#features" class="hover:text-resonance-glow transition-colors">PEER EXPERIENCE</a>
