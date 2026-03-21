@@ -7,8 +7,8 @@
       </div>
       <div class="flex items-center gap-8">
         <div class="hidden md:flex gap-8 font-mono text-xs text-[var(--nav-text)]">
-          <a href="#hero" class="hover:text-resonance-glow transition-colors">ORACLE</a>
-          <a href="#log" class="hover:text-resonance-glow transition-colors">beebee</a>
+          <a href="#hero" class="hover:text-resonance-glow transition-colors">HOP</a>
+          <a href="#log" class="hover:text-resonance-glow transition-colors">BentoBoxDS</a>
           <a href="#features" class="hover:text-resonance-glow transition-colors">PEER EXPERIENCE</a>
         </div>
         <ThemeToggle />

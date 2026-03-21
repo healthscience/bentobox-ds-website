@@ -52,7 +52,7 @@
 import heliClockImage from '@/assets/heliclock-circle.png'
 import energystrapImage from '@/assets/energystrap-circle.png'
 import resonanceImage from '@/assets/respulse-1g.png'
-import besearchImage from '@/assets/energystrap-circle.png'
+import besearchImage from '@/assets/besearch-cycle-web.png'
 import beebeechatImage from '@/assets/beebeechat-circle.png'
 // import privacyImage from '@/assets/beebeechat-circle.png'
 
@@ -63,8 +63,8 @@ const demos = [
     feature: 'Aligns your internal rhythm with the solar cycle.'
   },
   {
-    title: 'Energy-Based Scheduler',
-    description: 'Extract energy, context & coherence',
+    title: 'The life-strap scheduler',
+    description: 'Extract capacity, context & coherence',
     feature: 'What energy is required? What data? How to model?'
   },
     {

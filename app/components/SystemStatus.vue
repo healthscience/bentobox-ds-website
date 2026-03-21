@@ -29,17 +29,26 @@
               color="primary" 
               class="bg-resonance-glow text-forest-deep hover:bg-white transition-colors"
             >
-              Initialize Your Caledonian Node
+              Download BentoBoxDS
             </UButton>
           </div>
           
-          <div class="pt-4">
+          <div class="pt-4 text-left md:text-right">
+            <div class="text-xs text-moss-light space-y-4 mb-4 opacity-80 leading-relaxed">
+              <p class="text-resonance-glow font-bold uppercase tracking-wider">The Path to the Boreal</p>
+
+              <p>The goal of BentoBoxDS is to generate a Peer experience on the fly. This is not a static dashboard; it is a Sovereign Skeleton that senses the Peer’s coordinates—biological, temporal, and spatial—and assembles a living world in real-time.</p>
+
+              <p>This is the PeerStack in motion: where the Algotecture of a home meets the Heli-Sync of the sun and the ResonAgents of the Peer's own cells.</p>
+
+              <p>The Orrery is active. The map is breathing. The continent is for the Peer to trace.</p>
+            </div>
             <NuxtLink 
               to="https://healthscience.network" 
               target="_blank"
-              class="text-moss-light hover:text-resonance-glow transition-colors flex items-center justify-end gap-2"
+              class="text-moss-light hover:text-resonance-glow transition-colors flex items-center md:justify-end gap-2"
             >
-              Path to the Boreal <UIcon name="i-heroicons-arrow-right" />
+              HOP (health oracle protocol) and the path to the Boreal<UIcon name="i-heroicons-arrow-right" />
             </NuxtLink>
           </div>
         </div>

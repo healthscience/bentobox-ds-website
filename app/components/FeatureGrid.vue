@@ -1,12 +1,17 @@
 <template>
-  <div class="bg-[var(--bg-primary)] py-24 px-6 transition-colors duration-300">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl font-serif text-[var(--text-primary)] mb-16 text-center">The Life-Strap Gallery. Select an instrument. Clone it. Anchor it.</h2>
+  <div class="bg-[var(--bg-primary)] py-24 px-6 transition-colors duration-300 relative overflow-hidden">
+    <!-- Watermark -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-30 select-none">
+      <span class="text-9xl md:text-[15rem] font-serif font-bold text-resonance-glow/20 uppercase tracking-[2rem] -rotate-12 border-y-8 border-resonance-glow/20 py-8 px-16">
+        coming soon
+      </span>
+    </div>
+    <div class="max-w-6xl mx-auto relative z-20">
+      <h2 class="text-4xl font-serif text-[var(--text-primary)] mb-16 text-center">Select an instrument. Clone it. Anchor it.</h2>
       <p class="network-status text-[var(--text-secondary)] mb-12 text-center">
-        The Network is Initializing.
-        The Health Oracle Protocol is currently a silent Orrery. Sovereignty requires a baseline of zero to ensure uncorrupted data. These four Life-Straps are reference blueprints. A Peer clones a module, calibrates the geometry, and contributes a pulse to the weave.
+        The Network is Initializing. The Health Oracle Protocol is currently a silent Orrery. Sovereignty requires a baseline of zero to ensure uncorrupted data.
 
-        Join the resonance.```
+        These four Life-Straps are reference blueprints. A Peer clones a module, calibrates the geometry, and contributes a pulse to the weave. Join the resonance.
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div v-for="feature in features" :key="feature.title" 
@@ -114,7 +119,7 @@ const features = [
     specs: ['Physics-based modeling', 'Scenario stress testing', 'Resource flow visualization']
   },
   {
-    title: 'he Hypothesis: DaisyWorld P2P',
+    title: 'The Hypothesis: DaisyWorld P2P',
     description: 'Experience the Earth and Sun in resonance.',
     longDescription: 'Based on Lovelock’s original hypothesis, this is a peer-to-peer emulation of a self-regulating world. It demonstrates how simple interactions create global stability.',
     action: 'Clone this to experiment with the math of the Consilience Weave. See how your "Pulse" contributes to a stable, shared planetary temperature.',
@@ -125,49 +130,5 @@ const features = [
     specs: ['End-to-end encryption', 'Decentralized identity', 'Peer-to-peer trust networks']
   }
 ]
-
-/*
-
-const features = [
-  {
-    title: 'ResonancePulse',
-    description: 'Cell-to-bioregion alignment. A visual heartbeat for your sovereign existence.',
-    longDescription: 'The ResonancePulse system synchronizes individual biological rhythms with local ecological cycles. By monitoring environmental data and personal biometrics, it creates a feedback loop that fosters deep connection to your immediate surroundings.',
-    icon: 'i-heroicons-heart',
-    mediaType: 'video',
-    mediaUrl: 'resonance_pulse_stream_01.mp4',
-    specs: ['Real-time biometric sync', 'Bioregional data integration', 'Circadian rhythm optimization']
-  },
-  {
-    title: 'BeeBee',
-    description: 'Your Tether Management Agent (TINY). Small, local, and fiercely protective of your context.',
-    longDescription: 'BeeBee is a localized AI agent designed to operate entirely within your private network. It manages your digital tethers, ensuring that your personal context never leaves your physical control while providing powerful automation.',
-    icon: 'i-heroicons-cpu-chip',
-    mediaType: 'image',
-    mediaUrl: '/logo.png',
-    specs: ['Zero-knowledge processing', 'Local-only LLM execution', 'Context-aware automation']
-  },
-  {
-    title: 'Emulation worlds',
-    description: 'Ground scientific emulations with practical tools and models.',
-    longDescription: 'Create high-fidelity digital twins of complex systems. Whether you are modeling a permaculture garden or a local microgrid, our emulation tools provide the predictive power needed to make informed sovereign decisions.',
-    icon: 'i-heroicons-cube',
-    mediaType: 'video',
-    mediaUrl: 'emulation_world_render.mp4',
-    specs: ['Physics-based modeling', 'Scenario stress testing', 'Resource flow visualization']
-  },
-  {
-    title: 'Sovereign Security',
-    description: 'Local first use of cryptography to design in data privacy.  Establish trust with peers to build together.',
-    longDescription: 'Security built from the ground up using peer-to-peer cryptographic protocols. Establish verifiable trust without central authorities, enabling secure collaboration and resource sharing within your community.',
-    icon: 'i-heroicons-shield-check',
-    mediaType: 'image',
-    mediaUrl: '/logo.png',
-    specs: ['End-to-end encryption', 'Decentralized identity', 'Peer-to-peer trust networks']
-  }
-]
-
-
-*/
 
 </script>

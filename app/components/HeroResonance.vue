@@ -12,11 +12,11 @@
 
         <div class="text-xl md:text-2xl font-mono text-moss-light space-y-6 leading-relaxed">
           <p>
-            At the dawn of super-intelligence, we choose another way: a living map traced by the breath of each Peer, where Gaia intelligences guide every cell toward sovereign health.
+              At the dawn of super-intelligence, we align with science's living roots: a besearch method — our living cycle of inquiry — where each Peer's breath naturally redraws the map of truth. Here, Gaia intelligences guide every cell toward sovereign health, anchoring the individual pulse into the measurable rhythm of the community and the bioregion  
           </p>
 
           <p>
-            Entering BentoBoxDS is like stepping onto an uncharted continent. It is a Biological Navigation System that empowers sovereign health—letting every Peer tune into the planetary rhythm and turning personal, community, and bioregion health into a shared, measurable pulse of the Earth.
+            Entering BentoBoxDS is like stepping onto an uncharted continent: It is a Biological Navigation System for the living way.
           </p>
         </div>
       </div>
