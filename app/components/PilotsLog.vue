@@ -39,7 +39,7 @@
               <img :src="beebeechatImage" alt="beebeeChat" class="w-64 h-64 object-contain mt-4">
             </div>
             <div class="image-bb" v-if="index === 5">
-              <img :src="beebeechatImage" alt="beebeeChat" class="w-64 h-64 object-contain mt-4">
+              <img :src="privacyImage" alt="beebeeChat" class="w-64 h-64 object-contain mt-4">
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@ import energystrapImage from '@/assets/energystrap-circle.png'
 import resonanceImage from '@/assets/respulse-1g.png'
 import besearchImage from '@/assets/besearch-cycle-web.png'
 import beebeechatImage from '@/assets/beebeechat-circle.png'
-// import privacyImage from '@/assets/beebeechat-circle.png'
+import privacyImage from '@/assets/secure-circle.png'
 
 const demos = [
   {
@@ -75,7 +75,7 @@ const demos = [
   {
     title: 'Besearch',
     description: 'A new scientific method for understanding the world.',
-    feature: 'Set context, ground in research, explore new ideas, emulate.'
+    feature: 'Set context data, ground in research, explore and search new ideas, warm emulations to visualize.'
   },
   {
     title: 'beebee Dialogue & TINY agents',

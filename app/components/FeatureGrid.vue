@@ -66,8 +66,26 @@
                 <img :src="selectedFeature.mediaUrl" :alt="selectedFeature.title" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
               </div>
               <div v-else-if="selectedFeature.mediaType === 'video'" class="w-full h-full flex items-center justify-center">
+                <!-- External Video Embed -->
+                <iframe v-if="selectedFeature.mediaUrl"
+                        :src="selectedFeature.mediaUrl"
+                        class="w-full h-full"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                </iframe>
+                <!-- Local Video -->
+                <video v-else-if="selectedFeature.mediaUrl.endsWith('.mp4') || selectedFeature.mediaUrl.endsWith('.webm')"
+                       class="w-full h-full object-cover"
+                       controls
+                       autoplay
+                       muted
+                       loop>
+                  <source :src="selectedFeature.mediaUrl" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
                 <!-- Placeholder for video -->
-                <div class="text-[var(--text-secondary)] font-mono text-xs flex flex-col items-center">
+                <div v-else class="text-[var(--text-secondary)] font-mono text-xs flex flex-col items-center">
                   <UIcon name="i-heroicons-play-circle" class="w-16 h-16 mb-4 text-resonance-glow animate-pulse" />
                   [ VIDEO STREAM: {{ selectedFeature.mediaUrl }} ]
                 </div>
@@ -84,6 +102,7 @@
 <script setup>
 const selectedFeature = ref(null)
 
+
 const features = [
   {
     title: 'The Metabolism: Swim for Longevity',
@@ -93,7 +112,7 @@ const features = [
     extend: 'Easily add "Running" or "Cycling" modules to build a complete Triathlete Coherence Map.',
     icon: 'i-heroicons-heart',
     mediaType: 'video',
-    mediaUrl: 'resonance_pulse_stream_01.mp4',
+    mediaUrl: 'https://rumble.com/embed/v7502iu/?pub=4gsxcs',
     specs: ['Real-time biometric sync', 'Bioregional data integration', 'Circadian rhythm optimization']
   },
   {
@@ -114,7 +133,7 @@ const features = [
     action: 'Clone this to begin mapping the external "ResonancePulse" of your bioregion.',
     extend: 'Connect soil moisture sensors or local air quality Legos to expand the environmental weave.',
     icon: 'i-heroicons-cube',
-    mediaType: 'video',
+    mediaType: 'image',
     mediaUrl: 'emulation_world_render.mp4',
     specs: ['Physics-based modeling', 'Scenario stress testing', 'Resource flow visualization']
   },

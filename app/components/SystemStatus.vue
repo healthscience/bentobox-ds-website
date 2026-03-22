@@ -34,7 +34,7 @@
           </div>
           
           <div class="pt-4 text-left md:text-right">
-            <div class="text-xs text-moss-light space-y-4 mb-4 opacity-80 leading-relaxed">
+            <div class="text-s text-moss-light space-y-4 mb-4 opacity-80 leading-relaxed">
               <p class="text-resonance-glow font-bold uppercase tracking-wider">The Path to the Boreal</p>
 
               <p>The goal of BentoBoxDS is to generate a Peer experience on the fly. This is not a static dashboard; it is a Sovereign Skeleton that senses the Peer’s coordinates—biological, temporal, and spatial—and assembles a living world in real-time.</p>
