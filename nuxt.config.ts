@@ -47,9 +47,9 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'BentoBoxDS | Gaming Engine for Life',
+      title: 'BentoBoxDS | Gaia Intelligences Shape Health',
       meta: [
-        { name: 'description', content: 'BentoBoxDS is biological navigation tool for Life.' }
+        { name: 'description', content: 'Gaia intelligences shape health.' }
       ],
       script: [
         { src: '/js/heli-clock.js' }

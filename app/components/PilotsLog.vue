@@ -75,7 +75,7 @@ const demos = [
   {
     title: 'Besearch',
     description: 'A new scientific method for understanding the world.',
-    feature: 'Set context data, ground in research, explore and search new ideas, warm emulations to visualize.'
+    feature: 'Set context data, ground in research, explore and search new ideas, warm emulations to understand and feel the feedback or resonancePulse.'
   },
   {
     title: 'beebee Dialogue & TINY agents',
