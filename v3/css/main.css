@@ -43,24 +43,30 @@ body.boreal-aesthetic {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     font-family: var(--font-humanist);
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto; /* Ensure natural scrolling is possible */
     display: flex;
     flex-direction: column;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.lens-view {
-    /* overflow-y: auto; */ /* Removed to keep headers fixed */
+    /* When lens is active, we still want the whole page to be scrollable if content exceeds viewport */
+    overflow-y: auto;
 }
 
 /* Header & Footer */
 .vessel-header {
-    padding: 1rem 2rem;
+    height: 5rem;
+    padding: 0 2rem;
     z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    background: var(--bg-primary);
 }
 
 .header-controls {
@@ -205,10 +211,47 @@ body.lens-view {
     gap: 1rem;
 }
 
-.logo-text {
-    font-size: 1.2rem;
-    font-weight: bold;
-    letter-spacing: 2px;
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+
+.context-selectors {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.selector-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--color-resonance-glow);
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+.context-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.4rem 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.context-btn:hover {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+}
+
+.context-btn.active {
+    background: var(--color-resonance-glow);
+    color: var(--color-forest-deep);
+    border-color: var(--color-resonance-glow);
 }
 
 .badge {
@@ -225,10 +268,20 @@ body.lens-view {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 0;
+    gap: 22px; /* Increased gap by 20px for the 'split square' look */
     position: relative;
-    transition: grid-template-columns var(--transition-speed) var(--transition-easing),
-                grid-template-rows var(--transition-speed) var(--transition-easing);
+    padding: 0;
+    width: 60vh; /* Widened slightly more */
+    min-height: 400px; /* Ensure a minimum usable height */
+    height: 50vh; /* Increased from 40vh */
+    margin: 2rem auto; /* Center the matrix itself */
+    transition: all var(--transition-speed) var(--transition-easing);
+}
+
+.quadrant-matrix bento-quadrant {
+    width: 100%;
+    height: 100%;
+    transition: all var(--transition-speed) var(--transition-easing);
 }
 
 /* Transition States: Quadrants Go Small */
@@ -241,49 +294,32 @@ body.lens-view {
 
 .quadrant-matrix.collapsed {
     flex: none;
-    grid-template-columns: repeat(5, 1fr) !important;
+    grid-template-columns: repeat(4, 1fr) !important;
     grid-template-rows: 60px !important;
+    gap: 0 !important;
     height: 60px;
+    min-height: 0 !important;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 !important;
     z-index: 150;
     position: sticky;
-    top: 0;
+    top: 5rem; /* Right below vessel-header */
     background: var(--bg-primary);
     border-bottom: 1px solid var(--border-color);
 }
 
-/* Reorder for horizontal flow: Now Me, Now Us, Nucleus, Future Me, Future Us */
+/* Reorder for horizontal flow: Now Me, Now Us, Future Me, Future Us */
 .quadrant-matrix.collapsed #now-me { order: 1; }
-.quadrant-matrix.collapsed #now-us { order: 2; }
-.quadrant-matrix.collapsed #nucleus { order: 3; position: relative; top: auto; left: auto; transform: none; width: 100%; height: 100%; }
-.quadrant-matrix.collapsed #future-me { order: 4; }
-.quadrant-matrix.collapsed #future-us { order: 5; }
-
-.quadrant-matrix.collapsed interplay-nucleus {
-    width: 100% !important;
-    height: 100% !important;
-    opacity: 1 !important;
-    transform: none !important;
-}
+.quadrant-matrix.collapsed #future-me { order: 2; }
+.quadrant-matrix.collapsed #now-us { order: 3; }
+.quadrant-matrix.collapsed #future-us { order: 4; }
 
 .quadrant-matrix.collapsed bento-quadrant {
     opacity: 1 !important;
     transform: none !important;
-}
-
-/* Nucleus Expanded State */
-.quadrant-matrix.nucleus-expanded {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-}
-
-.quadrant-matrix.nucleus-expanded interplay-nucleus {
-    width: 60%;
-    height: 60%;
-}
-
-.quadrant-matrix.nucleus-expanded bento-quadrant {
-    opacity: 0.2;
-    transform: scale(0.8);
+    width: 100%;
+    height: 100%;
 }
 
 /* Lens Container (Overlay) */
@@ -291,19 +327,43 @@ body.lens-view {
     flex: 1;
     width: 100%;
     background: var(--bg-primary);
-    z-index: 100;
-    padding: 2rem;
-    overflow-y: auto;
+    z-index: 200; /* Increased to be above phase-header if needed */
+    padding: 1rem 2rem;
+    /* overflow-y: auto; */ /* Let the body handle scrolling for better sticky behavior */
     display: none;
     flex-direction: column;
     align-items: center;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease, backdrop-filter 0.5s ease;
 }
 
 .lens-container.active {
     display: flex;
     opacity: 1;
+}
+
+.lens-container.sanctuary-view {
+    /* min-height handled by flex: 1 */
+}
+
+.lens-container.sanctuary-view .lens-footer {
+    display: none;
+}
+
+.lens-container.instrument-view {
+    background: rgba(11, 31, 17, 0.85); /* Transparent forest deep */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.instrument-trigger.active {
+    opacity: 1;
+    color: var(--color-resonance-glow);
+}
+
+.instrument-trigger.active .inst-icon {
+    border-color: var(--color-resonance-glow);
+    box-shadow: 0 0 10px rgba(0, 255, 194, 0.4);
 }
 
 .back-btn {
@@ -313,8 +373,134 @@ body.lens-view {
 /* Lens Specifics */
 .lens-header {
     width: 100%;
-    max-width: 800px;
-    margin-bottom: 2rem;
+    max-width: 1000px;
+    margin-bottom: 1rem;
+}
+
+/* Emulation Layout */
+.emulation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.color-space-placeholder {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(45deg, var(--color-forest-soft), var(--color-resonance-glow));
+    border-radius: 8px;
+    opacity: 0.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    color: white;
+}
+
+/* Slide-out Layers */
+.slide-out-left, .slide-out-right {
+    position: fixed;
+    top: 150px;
+    width: 350px;
+    height: calc(100vh - 200px);
+    background: rgba(11, 31, 17, 0.95);
+    z-index: 300;
+    padding: 2rem;
+    box-shadow: 20px 0 50px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    transition: all 0.5s ease;
+    display: flex; /* Added to help with layout */
+    flex-direction: column;
+}
+
+.beebee-chat {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    flex: 1;
+    overflow-y: auto; /* Ensure chat itself scrolls if layer is fixed */
+}
+
+.slide-out-left {
+    left: -400px;
+    border-right: 1px solid var(--color-resonance-glow);
+}
+
+.slide-out-left.active {
+    left: 0;
+}
+
+.slide-out-right {
+    right: -400px;
+    border-left: 1px solid var(--color-resonance-glow);
+}
+
+.slide-out-right.active {
+    right: 0;
+}
+
+.slide-out-bottom {
+    position: fixed;
+    bottom: -400px;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background: rgba(11, 31, 17, 0.95);
+    border-top: 1px solid var(--color-resonance-glow);
+    transition: bottom 0.5s ease;
+    z-index: 300;
+    padding: 2rem;
+    overflow-y: auto; /* Added for scrolling */
+}
+
+.slide-out-bottom.active {
+    bottom: 0;
+}
+
+.beebee-header, .bento-lens-header {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    color: var(--color-resonance-glow);
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+.bee-msg { margin-bottom: 1rem; }
+
+/* Guidebook & Instruments */
+.lens-footer {
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 4rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+    padding-bottom: 4rem; /* Extra space at bottom */
+}
+
+.guidebook-section {
+    font-family: var(--font-mono);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 2px solid var(--color-resonance-glow);
+}
+
+.guidebook-section h4 {
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.instruments-rollout-inline {
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-start;
 }
 
 .lens-title {
@@ -496,6 +682,15 @@ body.lens-view {
     font-size: 0.9rem;
     color: var(--color-moss-light);
     margin-top: 1rem;
+}
+
+phase-header {
+    position: sticky;
+    top: calc(5rem + 60px); /* Below vessel-header and collapsed quadrants */
+    z-index: 140;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    margin: 0 !important;
 }
 
 /* Responsive */

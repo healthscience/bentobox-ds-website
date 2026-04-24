@@ -6,7 +6,6 @@
 class BentoApp {
     constructor() {
         this.hub = document.getElementById('app-hub');
-        this.nucleus = document.getElementById('nucleus');
         this.quadrants = document.querySelectorAll('bento-quadrant');
         this.lensOverlay = document.getElementById('lens-overlay');
         this.lensContent = document.getElementById('lens-content');
@@ -14,6 +13,13 @@ class BentoApp {
         this.sunIcon = document.getElementById('sun-icon');
         this.moonIcon = document.getElementById('moon-icon');
         this.phaseHeader = document.getElementById('prime-directive');
+        this.contextBtns = document.querySelectorAll('.context-btn');
+        this.beebeeLayer = document.getElementById('beebee-layer');
+        this.interplayLayer = document.getElementById('interplay-layer');
+        this.guidebook = document.getElementById('guidebook-story');
+        this.lensInstruments = document.getElementById('lens-instruments');
+        
+        this.currentContext = 'swimming';
 
         this.init();
     }
@@ -25,25 +31,54 @@ class BentoApp {
 
         this.themeToggle.addEventListener('click', () => this.toggleTheme());
 
+        // Context Switching
+        this.contextBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                this.setContext(btn.dataset.context);
+            });
+        });
+
         // Event Listeners for UI
         this.quadrants.forEach(q => {
             q.addEventListener('click', () => this.handleQuadrantClick(q.id));
         });
 
-        this.nucleus.addEventListener('click', () => {
-            this.toggleNucleus();
+        // Instrument Nav Toggling
+        document.querySelectorAll('.instrument-trigger').forEach(trigger => {
+            // Get the hash from either data-hash or the legacy onclick string
+            const rawOnclick = trigger.getAttribute('onclick');
+            const hashMatch = rawOnclick?.match(/'([^']+)'/);
+            const targetHash = trigger.getAttribute('data-hash') || (hashMatch ? hashMatch[1] : null);
+            
+            if (targetHash) {
+                trigger.setAttribute('data-hash', targetHash);
+                trigger.removeAttribute('onclick');
+                
+                trigger.addEventListener('click', (e) => {
+                    const currentHash = window.location.hash.replace('#', '');
+                    if (currentHash === targetHash) {
+                        window.location.hash = ''; // Toggle off
+                    } else {
+                        window.location.hash = targetHash;
+                    }
+                });
+            }
         });
-
-        // Interplay Hover Resonance
-        this.nucleus.addEventListener('mouseenter', () => this.phaseHeader.setAttribute('active-phase', 'interplay'));
-        this.nucleus.addEventListener('mouseleave', () => this.route());
 
         // Phase Header Navigation
         this.phaseHeader.addEventListener('phase-select', (e) => {
             const phase = e.detail.phase;
-            if (phase === 'story') window.location.hash = 'now-me';
-            if (phase === 'interplay') window.location.hash = 'interplay';
-            if (phase === 'emulation') window.location.hash = 'future-me';
+            this.phaseHeader.setAttribute('active-phase', phase);
+            
+            // If we are already in a lens view, just re-route to update content
+            if (window.location.hash) {
+                this.route();
+            } else {
+                // If in hub, navigate to representative quadrant
+                if (phase === 'story') window.location.hash = 'now-me';
+                if (phase === 'interplay') window.location.hash = 'interplay';
+                if (phase === 'emulation') window.location.hash = 'future-me';
+            }
         });
 
         // Router
@@ -64,48 +99,49 @@ class BentoApp {
         }
     }
 
+    setContext(context) {
+        this.currentContext = context;
+        this.contextBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.context === context);
+        });
+        this.route(); // Refresh current view
+    }
+
     handleQuadrantClick(id) {
         window.location.hash = id;
     }
 
-    toggleNucleus() {
-        if (this.hub.classList.contains('nucleus-expanded')) {
-            window.location.hash = '';
-        } else {
-            window.location.hash = 'interplay';
-        }
-    }
-
     route() {
         const hash = window.location.hash.replace('#', '');
-        this.resetUI();
-
+        
         if (!hash) {
             this.showHub();
             this.phaseHeader.removeAttribute('active-phase');
             return;
         }
 
+        // Default to emulation if no phase is active and we are in a quadrant
+        if (!this.phaseHeader.hasAttribute('active-phase') && hash !== 'about' && !hash.startsWith('instruments/')) {
+            this.phaseHeader.setAttribute('active-phase', 'emulation');
+        }
+
+        const phase = this.phaseHeader.getAttribute('active-phase');
+
         switch (hash) {
             case 'now-me':
-                this.activateLens('tl', 'Story', 'now-me');
-                this.phaseHeader.setAttribute('active-phase', 'story');
+                this.activateLens('tl', 'Now', 'now-me');
                 break;
             case 'future-me':
-                this.activateLens('tr', 'Emulation', 'future-me');
-                this.phaseHeader.setAttribute('active-phase', 'emulation');
+                this.activateLens('tr', 'Projection', 'future-me');
                 break;
             case 'now-us':
-                this.activateLens('bl', 'Network', 'now-us');
-                this.phaseHeader.setAttribute('active-phase', 'story');
+                this.activateLens('bl', 'Network now', 'now-us');
                 break;
             case 'future-us':
-                this.activateLens('br', 'Collective', 'future-us');
-                this.phaseHeader.setAttribute('active-phase', 'emulation');
+                this.activateLens('br', 'Coherence', 'future-us');
                 break;
             case 'interplay':
                 this.expandNucleus();
-                this.phaseHeader.setAttribute('active-phase', 'interplay');
                 break;
             case 'about':
                 this.activateLens('full', 'Philosophical Sanctuary', null);
@@ -122,15 +158,23 @@ class BentoApp {
     resetUI() {
         this.hub.className = 'quadrant-matrix';
         this.lensOverlay.classList.remove('active');
+        this.lensOverlay.classList.remove('instrument-view');
+        this.lensOverlay.classList.remove('sanctuary-view');
+        this.phaseHeader.removeAttribute('collapsed');
         document.body.classList.remove('lens-view');
+        // Removed forcing overflow hidden to allow natural scrolling if designed
         
-        // Reset quadrant/nucleus attributes
+        // Reset layers immediately to prevent ghosting
+        this.beebeeLayer.classList.remove('active');
+        this.interplayLayer.classList.remove('active');
+        this.beebeeLayer.style.display = 'none';
+        this.interplayLayer.style.display = 'none';
+
+        // Reset quadrant attributes
         this.quadrants.forEach(q => {
             q.removeAttribute('collapsed');
             q.removeAttribute('active');
         });
-        this.nucleus.removeAttribute('collapsed');
-        this.nucleus.removeAttribute('active');
     }
 
     showHub() {
@@ -142,131 +186,108 @@ class BentoApp {
         this.resetUI();
         this.hub.classList.add('collapsed');
         this.hub.classList.add(`lens-active-${position}`);
+        this.phaseHeader.setAttribute('collapsed', '');
         
+        if (activeId === null) {
+            this.lensOverlay.classList.add('sanctuary-view');
+        }
+
         // Set collapsed and active states
         this.quadrants.forEach(q => {
             q.setAttribute('collapsed', '');
             if (q.id === activeId) q.setAttribute('active', '');
         });
-        this.nucleus.setAttribute('collapsed', '');
 
         document.body.classList.add('lens-view');
         
-        // Show overlay immediately or with slight delay
+        // Show overlay immediately
         this.lensOverlay.classList.add('active');
         this.renderLens(title);
     }
 
     expandNucleus() {
-        this.resetUI();
-        this.hub.classList.add('collapsed');
-        this.hub.classList.add('nucleus-expanded');
-        
-        this.quadrants.forEach(q => q.setAttribute('collapsed', ''));
-        this.nucleus.setAttribute('collapsed', '');
-        this.nucleus.setAttribute('active', '');
-
-        document.body.classList.add('lens-view');
-
-        this.lensOverlay.classList.add('active');
-        this.renderLens('Interplay / Besearch');
+        // Re-routing to a default quadrant or handling specifically if needed
+        // For now, let's treat 'interplay' hash as a mode of a quadrant or global
+        this.activateLens('full', 'Interplay / Besearch', null);
     }
 
     renderLens(title) {
         let content = '';
         const hash = window.location.hash.replace('#', '');
+        const phase = this.phaseHeader.getAttribute('active-phase') || 'emulation';
 
-        switch (hash) {
-            case 'now-me':
-                content = `
-                    <div class="story-lens">
-                        <p class="manifesto">The initialization of the Sovereign ID. Your witness begins here.</p>
-                        <div class="strike-zone">
-                            <button id="strike-key" class="strike-btn">Strike Key</button>
-                            <p class="hint">Initiate baseline ledger entry</p>
-                        </div>
-                        <div class="pulse-visual">
-                            <div class="soft-pulse"></div>
-                        </div>
-                    </div>
-                `;
-                break;
-            case 'interplay':
-                content = `
-                    <div class="besearch-lens">
-                        <div class="braids-container">
-                            <svg id="besearch-braids" viewBox="0 0 400 200">
-                                <!-- Strands will be animated here -->
-                                <path class="braid-strand" d="M0,100 C100,0 300,200 400,100" />
-                                <path class="braid-strand" d="M0,100 C100,200 300,0 400,100" />
-                            </svg>
-                        </div>
-                        <div class="manual-feature">
-                            <h3>Strands & Braids Guide</h3>
-                            <p>Context → Research → Search → Emulation</p>
-                            <p class="mono-text">Data is braided into a Coherence Ledger locally.</p>
-                        </div>
-                    </div>
-                `;
-                break;
-            case 'future-me':
-                content = `
-                    <div class="emulation-lens">
-                        <div class="clock-display">
-                            <heli-clock></heli-clock>
-                        </div>
-                        <div class="emulation-controls">
-                            <button class="control-btn" onclick="app.accelerateEmulation()">Me Tomorrow</button>
-                            <p class="status">Projecting solar cycle health outcomes...</p>
-                        </div>
-                    </div>
-                `;
-                break;
-            case 'now-us':
-                content = `
-                    <div class="network-lens">
-                        <resonance-pulse cues='[
-                            {"orbit": "metabolic", "angle": 45},
-                            {"orbit": "environment", "angle": 120},
-                            {"orbit": "ecological", "angle": 210},
-                            {"orbit": "economic", "angle": 300}
-                        ]'></resonance-pulse>
-                        <div class="network-status">
-                            <p>Peer Resilience: 84%</p>
-                        </div>
-                    </div>
-                `;
-                break;
-            case 'about':
-                content = `
-                    <div class="sanctuary-lens">
-                        <section class="sanctuary-section">
-                            <h2>Gaia Intelligences shape health</h2>
-                            <p class="opening-call-subtitle">The Opening Call</p>
-                            <div class="manifesto-text">
-                                <p>At the dawn of super-intelligence, we align with science's living roots: a besearch method — our living cycle of inquiry — where each Peer's breath naturally redraws the map of truth. Here, Gaia intelligences guide every cell toward sovereign health, anchoring the individual pulse into the measurable rhythm of the community and the bioregion.</p>
-                                <p>Entering BentoBoxDS is like stepping onto an uncharted continent: It is a Biological Navigation System for the living way.</p>
-                            </div>
-                        </section>
+        // Update instrument highlights
+        document.querySelectorAll('.instrument-trigger').forEach(trigger => {
+            const triggerHash = trigger.getAttribute('data-hash') || `instruments/${trigger.querySelector('.inst-label')?.textContent.toLowerCase().replace(' ', '-')}` || '';
+            trigger.classList.toggle('active', hash === triggerHash);
+        });
 
-                        <section class="sanctuary-section">
-                            <h3>Architecture of Participation</h3>
-                            <p class="sanctuary-subtitle">The Path to the Boreal</p>
-                            <div class="manifesto-text">
-                                <p>The goal of BentoBoxDS is to generate a Peer experience on the fly. This is not a static dashboard; it is a Sovereign Skeleton that senses the Peer’s coordinates—biological, temporal, and spatial—and assembles a living world in real-time.</p>
-                                <p>This is the PeerStack in motion: where the Algotecture of a home meets the Heli-Sync of the sun and the ResonAgents of the Peer's own cells.</p>
-                            </div>
-                        </section>
+        // Slide-out Layers Logic: ONLY active in Story/Interplay mode within a quadrant
+        const isInstrument = hash.startsWith('instruments/');
+        const isSanctuary = hash === 'about';
+        const isQuadrant = ['now-me', 'future-me', 'now-us', 'future-us'].includes(hash);
+        
+        this.beebeeLayer.classList.toggle('active', phase === 'story' && isQuadrant && !isSanctuary);
+        this.interplayLayer.classList.toggle('active', phase === 'interplay' && isQuadrant && !isSanctuary);
 
-                        <section class="sanctuary-section">
-                            <div class="manifesto-text">
-                                <p>The Orrery is active. The map is breathing. The continent is for the Peer to trace. <strong>HOP (health oracle protocol) and the path to the Boreal.</strong></p>
-                            </div>
-                        </section>
+        this.beebeeLayer.style.display = this.beebeeLayer.classList.contains('active') ? 'block' : 'none';
+        this.interplayLayer.style.display = this.interplayLayer.classList.contains('active') ? 'block' : 'none';
+
+        const pulseMode = phase === 'story' ? 'ghost' : 'full';
+
+        if (phase === 'emulation') {
+            content = `
+                <div class="emulation-grid">
+                    <div class="color-space-placeholder">
+                        <p>[ Color Space: ${this.currentContext} ]</p>
                     </div>
-                `;
-                break;
+                    <div class="clock-display">
+                        <heli-clock></heli-clock>
+                    </div>
+                </div>
+            `;
+        } else if (phase === 'story') {
+            content = `
+                <div class="story-lens">
+                    <resonance-pulse mode="${pulseMode}" cues='[{"orbit": "metabolic", "angle": 45}]'></resonance-pulse>
+                    <p class="manifesto" style="margin-top: 2rem;">Initiating the Sovereign Witness for <strong>${this.currentContext}</strong>.</p>
+                </div>
+            `;
+        } else if (phase === 'interplay') {
+            content = `
+                <div class="besearch-lens">
+                    <resonance-pulse mode="${pulseMode}" cues='[{"orbit": "metabolic", "angle": 45}]'></resonance-pulse>
+                </div>
+            `;
+        }
 
+        if (hash === 'about') {
+            content = `
+                <div class="sanctuary-lens">
+                    <section class="sanctuary-section">
+                        <h2>Gaia Intelligences shape health</h2>
+                        <p class="opening-call-subtitle">The Opening Call</p>
+                        <div class="manifesto-text">
+                            <p>At the dawn of super-intelligence, we align with science's living roots: a besearch method — our living cycle of inquiry — where each Peer's breath naturally redraws the map of truth. Here, Gaia intelligences guide every cell toward sovereign health, anchoring the individual pulse into the measurable rhythm of the community and the bioregion.</p>
+                            <p>Entering BentoBoxDS is like stepping onto an uncharted continent: It is a Biological Navigation System for the living way.</p>
+                        </div>
+                    </section>
+                </div>
+                <div class="manifesto-text">
+                <p>
+                    Architecture of Participation
+
+                    The Path to the Boreal
+
+                    The goal of BentoBoxDS is to generate a Peer experience on the fly. This is not a static dashboard; it is a Sovereign Skeleton that senses the Peer’s coordinates—biological, temporal, and spatial—and assembles a living world in real-time.
+
+                    This is the PeerStack in motion: where the Algotecture of a home meets the Heli-Sync of the sun and the ResonAgents of the Peer's own cells.
+
+                    The Orrery is active. The map is breathing. The continent is for the Peer to trace.
+                    HOP (health oracle protocol) and the path to the Boreal
+                </p>
+                </div>
+            `;
         }
 
         this.lensContent.innerHTML = `
@@ -279,12 +300,43 @@ class BentoApp {
             </div>
         `;
 
-        if (hash === 'now-me') {
-            document.getElementById('strike-key')?.addEventListener('click', () => {
-                alert('Baseline Ledger Initialized.');
-            });
+        // Guidebook Text
+        let guideText = '';
+        if (isSanctuary) {
+            this.guidebook.style.display = 'none';
+        } else {
+            this.guidebook.style.display = 'block';
+            if (phase === 'story') {
+                guideText = 'Start with a lifestrap story and dialgoue with beebee to build context.';
+            } else if (phase === 'interplay') {
+                guideText = 'Teach beebee the capacity, context, heli projections and attunement. Attunement means ....';
+            } else {
+                guideText = `You are currently exploring the <strong>${this.currentContext}</strong> experience through the lens of <strong>${phase}</strong>. The Sovereign Vessel maps biological resonance against the bioregional coherence ledger.`;
+            }
+
+            this.guidebook.innerHTML = `
+                <h4>Guidebook: ${phase.toUpperCase()} Mode</h4>
+                <p>${guideText}</p>
+            `;
         }
+
+        // Replicate Instruments triggers
+        this.lensInstruments.innerHTML = `
+            <div class="instrument-trigger" onclick="location.hash='instruments/heliclock'">
+                <span class="inst-icon">H</span>
+            </div>
+            <div class="instrument-trigger" onclick="location.hash='instruments/life-strap'">
+                <span class="inst-icon">L</span>
+            </div>
+            <div class="instrument-trigger" onclick="location.hash='instruments/resonance-pulse'">
+                <span class="inst-icon">R</span>
+            </div>
+            <div class="instrument-trigger" onclick="location.hash='instruments/besearch'">
+                <span class="inst-icon">B</span>
+            </div>
+        `;
     }
+
 
     accelerateEmulation() {
         alert('Time-shift projection initiated. Watching future solar cycles...');
@@ -293,11 +345,12 @@ class BentoApp {
     showInstrument(name) {
         this.resetUI();
         this.hub.classList.add('collapsed');
+        this.phaseHeader.setAttribute('collapsed', '');
         this.quadrants.forEach(q => q.setAttribute('collapsed', ''));
-        this.nucleus.setAttribute('collapsed', '');
         document.body.classList.add('lens-view');
 
         this.lensOverlay.classList.add('active');
+        this.lensOverlay.classList.add('instrument-view'); // Specific class for blur/background
         this.renderLens(`Instrument: ${name}`);
         
         const instruments = {

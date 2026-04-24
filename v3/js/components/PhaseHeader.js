@@ -12,11 +12,15 @@ export class PhaseHeader extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['active-phase'];
+        return ['active-phase', 'collapsed'];
     }
 
-    attributeChangedCallback() {
-        this.updateActivePhase();
+    attributeChangedCallback(name) {
+        if (name === 'active-phase') {
+            this.updateActivePhase();
+        } else if (name === 'collapsed') {
+            this.updateCollapsed();
+        }
     }
 
     updateActivePhase() {
@@ -27,86 +31,129 @@ export class PhaseHeader extends HTMLElement {
         });
     }
 
+    updateCollapsed() {
+        const isCollapsed = this.hasAttribute('collapsed');
+        this.shadowRoot.querySelector('.phase-rail').classList.toggle('collapsed', isCollapsed);
+        this.shadowRoot.host.classList.toggle('collapsed', isCollapsed);
+    }
+
     render() {
         this.shadowRoot.innerHTML = `
         <style>
             :host {
                 width: 100%;
-                padding: 1.5rem 0;
+                padding: 2rem 0;
                 display: flex;
                 justify-content: center;
                 background: transparent;
                 z-index: 100;
+                transition: all 0.5s ease;
+            }
+
+            :host(.collapsed) {
+                padding: 0;
+                margin: 0;
             }
 
             .phase-rail {
                 display: flex;
                 align-items: center;
-                gap: 1rem;
+                gap: 4rem;
+                transition: all 0.5s ease;
+            }
+
+            .phase-rail.collapsed {
+                gap: 2rem;
             }
 
             .phase-item {
                 font-family: var(--font-humanist);
-                font-size: 0.9rem;
+                font-size: 2rem;
                 text-transform: uppercase;
-                letter-spacing: 2px;
+                letter-spacing: 8px;
                 color: var(--text-secondary);
-                opacity: 0.4;
-                transition: all 0.5s var(--transition-easing, ease);
-                padding: 0.5rem 1rem;
+                opacity: 0.2;
+                transition: all 0.8s var(--transition-easing, ease);
+                padding: 1.5rem 3rem;
                 border: 1px solid transparent;
                 cursor: pointer;
+                position: relative;
+            }
+
+            .phase-rail.collapsed .phase-item {
+                font-size: 0.8rem;
+                letter-spacing: 4px;
+                padding: 0.5rem 1rem;
             }
 
             .phase-item:hover {
-                opacity: 1;
-                background: rgba(255, 255, 255, 0.05);
+                opacity: 0.6;
+                color: var(--color-resonance-glow);
+                letter-spacing: 10px;
             }
 
             .phase-braid {
+                width: 150px;
+                height: 40px;
+                overflow: visible;
+                transition: all 0.5s ease;
+            }
+
+            .phase-rail.collapsed .phase-braid {
                 width: 60px;
                 height: 20px;
-                overflow: visible;
             }
 
             .braid-line {
                 fill: none;
                 stroke: var(--text-secondary);
                 stroke-width: 0.5;
-                opacity: 0.2;
-                transition: all 0.5s var(--transition-easing, ease);
+                opacity: 0.1;
+                transition: all 0.8s var(--transition-easing, ease);
             }
 
-            /* Dynamic Resonance States */
-            .phase-item[data-phase="story"].active {
-                color: var(--color-resonance-glow);
-                opacity: 1;
-                text-shadow: 0 0 10px rgba(0, 255, 194, 0.4);
-                animation: bio-pulse 3s infinite ease-in-out;
+            /* Active State: Vibrant Yellow-Green Glow */
+            .phase-item.active {
+                opacity: 1 !important;
+                color: #e2ff3b !important; /* Cyber Lime / Yellow-Green */
+                text-shadow: 0 0 30px rgba(226, 255, 59, 0.8),
+                             0 0 60px rgba(226, 255, 59, 0.3);
+                transform: scale(1.2);
+                letter-spacing: 12px;
             }
 
-            .phase-item[data-phase="interplay"].active {
-                color: white;
-                opacity: 1;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+            .phase-rail.collapsed .phase-item.active {
+                transform: scale(1.1);
+                letter-spacing: 6px;
+                text-shadow: 0 0 15px rgba(226, 255, 59, 0.8);
             }
 
-            .phase-item[data-phase="interplay"].active + .phase-braid .braid-line,
-            .phase-braid:has(+ .phase-item[data-phase="interplay"].active) .braid-line {
-                stroke: white;
-                stroke-width: 1.5;
-                opacity: 0.6;
+            .phase-item.active::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 10%;
+                right: 10%;
+                height: 3px;
+                background: #e2ff3b;
+                box-shadow: 0 0 20px #e2ff3b;
             }
 
-            .phase-item[data-phase="emulation"].active {
-                color: var(--color-solar-amber);
-                opacity: 1;
-                text-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+            /* Dynamic braid resonance when active */
+            .phase-item.active + .phase-braid .braid-line,
+            .phase-braid:has(+ .phase-item.active) .braid-line {
+                stroke: #e2ff3b;
+                stroke-width: 2;
+                opacity: 0.5;
             }
 
             @keyframes bio-pulse {
-                0%, 100% { transform: scale(1); opacity: 0.8; }
-                50% { transform: scale(1.05); opacity: 1; }
+                0%, 100% { transform: scale(1.1); opacity: 0.9; }
+                50% { transform: scale(1.15); opacity: 1; }
+            }
+            
+            .phase-item.active[data-phase="story"] {
+                animation: bio-pulse 4s infinite ease-in-out;
             }
         </style>
         <div class="phase-rail">
@@ -135,6 +182,7 @@ export class PhaseHeader extends HTMLElement {
         });
 
         this.updateActivePhase();
+        this.updateCollapsed();
     }
 }
 customElements.define('phase-header', PhaseHeader);

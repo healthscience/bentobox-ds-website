@@ -8,15 +8,21 @@
     <script type="module" src="js/components/HeliClock.js" defer></script>
     <script type="module" src="js/components/ResonancePulse.js" defer></script>
     <script type="module" src="js/components/BentoQuadrant.js" defer></script>
-    <script type="module" src="js/components/InterplayNucleus.js" defer></script>
     <script type="module" src="js/components/PhaseHeader.js" defer></script>
     <script type="module" src="js/app.js" defer></script>
 </head>
 <body class="boreal-aesthetic">
     <header class="vessel-header">
         <div class="logo-container" onclick="location.hash=''" style="cursor: pointer;">
-            <span class="logo-text">BentoBox Logo</span>
+            <img src="../public/logo.png" alt="BentoBox Logo" class="logo-img">
             <span class="badge">HOP v1.0 Experimental</span>
+        </div>
+        <div class="context-selectors">
+            <span class="selector-label">Experiences:</span>
+            <button class="context-btn active" data-context="swimming">Swimming</button>
+            <button class="context-btn" data-context="heart">Heart</button>
+            <button class="context-btn" data-context="water">Water</button>
+            <button class="context-btn" data-context="daisy">Daisy World</button>
         </div>
         <div class="header-controls">
             <nav class="header-nav">
@@ -29,8 +35,6 @@
         </div>
     </header>
     
-    <phase-header id="prime-directive"></phase-header>
-
     <main id="app-hub" class="quadrant-matrix">
         <!-- The Four Quadrants -->
         <bento-quadrant id="now-me" type="tl" title="Now Me" subtitle="Story / Context"></bento-quadrant>
@@ -39,16 +43,51 @@
         <bento-quadrant id="future-us" type="br" title="Future Us" subtitle="Collective Longevity / Bioregional"></bento-quadrant>
 
         <!-- The Nucleus (Interplay) -->
-        <interplay-nucleus id="nucleus"></interplay-nucleus>
+        <!--<interplay-nucleus id="nucleus"></interplay-nucleus>-->
     </main>
 
+    <phase-header id="prime-directive"></phase-header>
+
+    <!-- peer experience select  Swimming  Heart Water  Daisy world -->
+
     <div id="lens-overlay" class="lens-container">
-        <!-- Lens Content will be injected here -->
+        <!-- Slide-out Layers -->
+        <div id="beebee-layer" class="slide-out-right">
+            <div class="beebee-header">Dialogue with BeeBee</div>
+            <div class="beebee-chat" id="beebee-chat-content">
+                  
+                <p class="bee-msg">Initializing Sovereign Witness...</p>
+                <p class="bee-msg user">Hello BeeBee, I'm starting my life-strap story.</p>
+                <p class="bee-msg">I am listening. How does your rhythm feel today?</p>
+            </div>
+        </div>
+        
+        <div id="interplay-layer" class="slide-out-bottom">
+            <div class="bento-lens-header">Lifestrap Lens & Besearch Cycle</div>
+            <div class="bento-lens-content">
+                <div class="interplay-mock">
+                    <p>Capacity: [| | | | | | | | | |] 80%</p>
+                    <p>Heli Projection: Active</p>
+                    <p>Besearch Progress: Phase 2</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Lens Content -->
+        <div id="lens-content-wrapper">
         <div id="lens-content"></div>
+        </div>
+
+        <!-- Guidebook & Instruments -->
+        <div id="lens-footer" class="lens-footer">
+            <div id="guidebook-story" class="guidebook-section"></div>
+            <!--<div id="lens-instruments" class="instruments-rollout-inline"></div>-->
+        </div>
     </div>
 
     <footer class="vessel-footer">
         <nav id="instrument-nav" class="rollout-nav">
+            <span class="selector-label">Instruments:</span>
             <div class="instrument-trigger" onclick="location.hash='instruments/heliclock'">
                 <span class="inst-icon">H</span>
                 <span class="inst-label">HeliClock</span>

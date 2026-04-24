@@ -1,5 +1,5 @@
 <template>
-  <div class="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 overflow-hidden bg-forest-deep">
+  <div class="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 bg-forest-deep">
     <div class="relative z-10 text-center mb-12 px-4">
       <h1 class="text-5xl md:text-7xl font-serif text-white mb-6">
         Gaia Intelligences shape health 
