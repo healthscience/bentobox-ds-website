@@ -1,0 +1,515 @@
+:root {
+    /* Boreal Design System Colors - Dark (Default) */
+    --color-forest-deep: #0B1F11;
+    --color-moss-light: #8A9A5B;
+    --color-slate-ghost: #2F3E46;
+    --color-resonance-glow: #00FFC2;
+    --color-solar-amber: #f59e0b;
+    
+    /* Light Theme Colors */
+    --color-meadow-light: #E8F5E9;
+    --color-forest-soft: #2E7D32;
+    --color-moss-dark: #556B2F;
+
+    /* Theme-specific Variables */
+    --bg-primary: var(--color-forest-deep);
+    --text-primary: #FFFFFF;
+    --text-secondary: var(--color-moss-light);
+    --border-color: rgba(255, 255, 255, 0.05);
+    
+    /* Typography */
+    --font-humanist: "Inter", "system-ui", sans-serif;
+    --font-mono: "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace";
+    --font-serif: "ui-serif", "Georgia", "Cambria", "Times New Roman", "Times", "serif";
+
+    --transition-speed: 0.6s;
+    --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.light-mode {
+    --bg-primary: var(--color-meadow-light);
+    --text-primary: var(--color-forest-soft);
+    --text-secondary: var(--color-moss-dark);
+    --border-color: rgba(46, 125, 50, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.boreal-aesthetic {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-humanist);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.lens-view {
+    /* overflow-y: auto; */ /* Removed to keep headers fixed */
+}
+
+/* Header & Footer */
+.vessel-header {
+    padding: 1rem 2rem;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.theme-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    transition: color 0.2s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--color-resonance-glow);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.nav-link {
+    color: var(--color-moss-light);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+/* Rollout Nav */
+.vessel-footer {
+    padding: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.rollout-nav {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.instrument-trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.instrument-trigger:hover {
+    opacity: 1;
+}
+
+.inst-icon {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--color-slate-ghost);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+}
+
+/* Instrument Rollouts */
+.instrument-rollout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.inst-large-icon {
+    width: 150px;
+    height: 150px;
+    border: 2px dashed var(--color-slate-ghost);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: var(--color-moss-light);
+    font-family: var(--font-mono);
+}
+
+.inst-section {
+    margin-bottom: 2rem;
+}
+
+.inst-section h4 {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--color-moss-light);
+    margin-bottom: 0.5rem;
+}
+
+.graft-btn {
+    background: transparent;
+    border: 1px solid var(--color-resonance-glow);
+    color: var(--color-resonance-glow);
+    padding: 1rem 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.graft-btn:hover {
+    background: var(--color-resonance-glow);
+    color: var(--color-forest-deep);
+}
+
+@media (max-width: 600px) {
+    .instrument-rollout {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.badge {
+    background: var(--color-slate-ghost);
+    padding: 0.2rem 0.5rem;
+    font-size: 0.7rem;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+}
+
+/* The Quadrant Grid Architecture */
+.quadrant-matrix {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0;
+    position: relative;
+    transition: grid-template-columns var(--transition-speed) var(--transition-easing),
+                grid-template-rows var(--transition-speed) var(--transition-easing);
+}
+
+/* Transition States: Quadrants Go Small */
+.quadrant-matrix.lens-active-tl { grid-template-columns: 3fr 1fr; grid-template-rows: 3fr 1fr; }
+.quadrant-matrix.lens-active-tr { grid-template-columns: 1fr 3fr; grid-template-rows: 3fr 1fr; }
+.quadrant-matrix.lens-active-bl { grid-template-columns: 3fr 1fr; grid-template-rows: 1fr 3fr; }
+.quadrant-matrix.lens-active-br { grid-template-columns: 1fr 3fr; grid-template-rows: 1fr 3fr; }
+.quadrant-matrix.lens-active-full { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+.quadrant-matrix.lens-active-full bento-quadrant { opacity: 0; transform: scale(0.9); }
+
+.quadrant-matrix.collapsed {
+    flex: none;
+    grid-template-columns: repeat(5, 1fr) !important;
+    grid-template-rows: 60px !important;
+    height: 60px;
+    z-index: 150;
+    position: sticky;
+    top: 0;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Reorder for horizontal flow: Now Me, Now Us, Nucleus, Future Me, Future Us */
+.quadrant-matrix.collapsed #now-me { order: 1; }
+.quadrant-matrix.collapsed #now-us { order: 2; }
+.quadrant-matrix.collapsed #nucleus { order: 3; position: relative; top: auto; left: auto; transform: none; width: 100%; height: 100%; }
+.quadrant-matrix.collapsed #future-me { order: 4; }
+.quadrant-matrix.collapsed #future-us { order: 5; }
+
+.quadrant-matrix.collapsed interplay-nucleus {
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.quadrant-matrix.collapsed bento-quadrant {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* Nucleus Expanded State */
+.quadrant-matrix.nucleus-expanded {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.quadrant-matrix.nucleus-expanded interplay-nucleus {
+    width: 60%;
+    height: 60%;
+}
+
+.quadrant-matrix.nucleus-expanded bento-quadrant {
+    opacity: 0.2;
+    transform: scale(0.8);
+}
+
+/* Lens Container (Overlay) */
+.lens-container {
+    flex: 1;
+    width: 100%;
+    background: var(--bg-primary);
+    z-index: 100;
+    padding: 2rem;
+    overflow-y: auto;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.lens-container.active {
+    display: flex;
+    opacity: 1;
+}
+
+.back-btn {
+    display: none; /* Removed as requested */
+}
+
+/* Lens Specifics */
+.lens-header {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 2rem;
+}
+
+.lens-title {
+    font-size: 2.5rem;
+    font-weight: 200;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.lens-divider {
+    height: 1px;
+    background: linear-gradient(to right, var(--color-resonance-glow), transparent);
+    margin-top: 1rem;
+}
+
+.lens-body {
+    width: 100%;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+/* Story Lens */
+.strike-zone {
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.strike-btn {
+    background: transparent;
+    border: 1px solid var(--color-resonance-glow);
+    color: var(--color-resonance-glow);
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    box-shadow: 0 0 15px rgba(0, 255, 194, 0.1);
+    transition: all 0.3s ease;
+}
+
+.strike-btn:hover {
+    background: var(--color-resonance-glow);
+    color: var(--color-forest-deep);
+    box-shadow: 0 0 30px rgba(0, 255, 194, 0.4);
+}
+
+.hint {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    font-family: var(--font-mono);
+}
+
+.soft-pulse {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--color-resonance-glow);
+    opacity: 0.1;
+    margin: 2rem auto;
+    animation: pulse 4s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.1; }
+    50% { transform: scale(1.5); opacity: 0.2; }
+}
+
+/* Emulation Lens */
+.clock-display {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.emulation-controls {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.control-btn {
+    background: var(--color-solar-amber);
+    color: var(--color-forest-deep);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-family: var(--font-mono);
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.control-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Sanctuary Lens */
+.sanctuary-lens {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+}
+
+.sanctuary-section {
+    margin-bottom: 5rem;
+}
+
+.sanctuary-section h2 {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    font-weight: 400;
+}
+
+.opening-call-subtitle {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--color-resonance-glow);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    margin-bottom: 2.5rem;
+}
+
+.manifesto-text {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.manifesto-text p {
+    margin-bottom: 2rem;
+}
+
+.sanctuary-section h3 {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.sanctuary-subtitle {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+.inst-name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+}
+
+.braid-strand {
+    fill: none;
+    stroke: var(--color-resonance-glow);
+    stroke-width: 1;
+    opacity: 0.4;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: flow 10s linear infinite;
+}
+
+@keyframes flow {
+    to { stroke-dashoffset: 0; }
+}
+
+.mono-text {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--color-moss-light);
+    margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nucleus-box {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .sanctuary-section h2 {
+        font-size: 2.5rem;
+    }
+    
+    .manifesto-text {
+        font-size: 1.1rem;
+    }
+}
