@@ -292,37 +292,22 @@ class BentoApp {
             content = `
                 <div class="sanctuary-lens">
                     <section class="sanctuary-section">
-                        <h2>Gaia Intelligences shape health</h2>
+                        <h2>Gaia Intelligences Shape Health</h2>
                         <p class="opening-call-subtitle">The Opening Call</p>
                         <div class="manifesto-text">
-                            <p>At the dawn of super-intelligence, we align with science's living roots: a besearch method — our living cycle of inquiry — where each Peer's breath naturally redraws the map of truth. Here, Gaia intelligences guide every cell toward sovereign health, anchoring the individual pulse into the measurable rhythm of the community and the bioregional coherence ledger.</p>
-                            <p>Entering BentoBoxDS is like stepping onto an uncharted continent: It is a Biological Navigation System for the living way.</p>
+                            <p>At the dawn of super-intelligence, we align with science's living roots: a besearch method—our living cycle of inquiry—where each Peer's breath naturally redraws the map of truth. Here, Gaia intelligences guide every cell toward sovereign health, anchoring the individual pulse into the measurable rhythm of the community and the bioregion.</p>
+                            <p>This is the Attunement of health. Entering BentoBoxDS is like stepping onto an uncharted continent: It is a Biological Navigation System designed to inhabit this living way.</p>
                         </div>
                     </section>
 
                     <section class="sanctuary-section">
-                        <h2>Sovereign & Open Source</h2>
+                        <h2>Architecture of Participation</h2>
+                        <p class="opening-call-subtitle">The Path to the Boreal V2</p>
                         <div class="manifesto-text">
-                            <p>BentoBoxDS is a local-first, open-source vessel. We believe that the tools used to witness your own biological truth must be as transparent as the air you breathe. By grounding our stack in open protocols and peer-to-peer resilience, we ensure that your data remains yours, and the logic remains public and auditable by the community.</p>
-                            <p>This is the commitment to the Boreal: a world where super-intelligence is coupled with the radical transparency of the living roots.</p>
-                        </div>
-                    </section>
-
-                    <section class="sanctuary-section">
-                        <div class="manifesto-text">
-                            <p>
-                                <h3>Architecture of Participation</h3>
-                                <br>
-                                <strong>The Path to the Boreal</strong>
-                                <br><br>
-                                The goal of BentoBoxDS is to generate a Peer experience on the fly. This is not a static dashboard; it is a Sovereign Skeleton that senses the Peer’s coordinates—biological, temporal, and spatial—and assembles a living world in real-time.
-                                <br><br>
-                                This is the PeerStack in motion: where the Algotecture of a home meets the Heli-Sync of the sun and the ResonAgents of the Peer's own cells.
-                                <br><br>
-                                The Orrery is active. The map is breathing. The continent is for the Peer to trace.
-                                <br><br>
-                                <strong>HOP (health oracle protocol) and the path to the Boreal</strong>
-                            </p>
+                            <p>The goal of BentoBoxDS is to generate a Peer experience on the fly. This is not a static dashboard; it is a Sovereign Skeleton that senses the Peer’s coordinates—biological, temporal, and spatial—and assembles a living world in real-time.</p>
+                            <p>Life is not a rehearsal; it is a real-player game where Attunement replaces the passive interventions of the old world. This is the PeerStack in motion: where the Algotecture of a home meets the Heli-Sync of the sun and the ResonAgents of the Peer's own cells. The Orrery is active. The map is breathing. The continent is for the Peer to trace.</p>
+                            <p>BentoBoxDS is a primary implementation of the Health Oracle Protocol (HOP), an open-source substrate designed for local-first, peer-to-peer life. This is an architecture of participation; peers can couple new experiences directly into the environment by utilizing the Skeleton Documentation and testing metabolic logic within the HOP Playground.</p>
+                            <p>Beyond the desktop, the vision involves shrinking the HOP-shim to inhabit mobile apps and tiny devices. Through this Melding process, hardware like vagus-straps or sensing-skin will feed live data into the local SafeFlow-ECS, transforming the BentoBox into a portable, biological compass that keeps the pulse in phase with the Heli-Sync wherever the Peer travels.</p>
                         </div>
                     </section>
                 </div>
