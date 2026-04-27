@@ -8,13 +8,14 @@
     <script type="module" src="js/components/HeliClock.js" defer></script>
     <script type="module" src="js/components/ResonancePulse.js" defer></script>
     <script type="module" src="js/components/BentoQuadrant.js" defer></script>
+    <script type="module" src="js/components/InterplayNucleus.js" defer></script>
     <script type="module" src="js/components/PhaseHeader.js" defer></script>
     <script type="module" src="js/app.js" defer></script>
 </head>
 <body class="boreal-aesthetic">
     <header class="vessel-header">
-        <div class="logo-container" onclick="location.hash=''" style="cursor: pointer;">
-            <img src="../public/logo.png" alt="BentoBox Logo" class="logo-img">
+        <div class="logo-container" id="vessel-logo" style="cursor: pointer;">
+            <img src="assets/logo.png" alt="BentoBox Logo" class="logo-img">
             <span class="badge">HOP v1.0 Experimental</span>
         </div>
         <div class="context-selectors">
@@ -41,9 +42,6 @@
         <bento-quadrant id="future-me" type="tr" title="Future Me" subtitle="Emulation / Goal"></bento-quadrant>
         <bento-quadrant id="now-us" type="bl" title="Now Us" subtitle="Peer Network / Resilience"></bento-quadrant>
         <bento-quadrant id="future-us" type="br" title="Future Us" subtitle="Collective Longevity / Bioregional"></bento-quadrant>
-
-        <!-- The Nucleus (Interplay) -->
-        <!--<interplay-nucleus id="nucleus"></interplay-nucleus>-->
     </main>
 
     <phase-header id="prime-directive"></phase-header>
@@ -73,6 +71,10 @@
             </div>
         </div>
 
+        <div id="emulation-layer" class="slide-out-top">
+            <h1 id="emulation-title">Now Swimming</h1>
+        </div>
+
         <!-- Main Lens Content -->
         <div id="lens-content-wrapper">
         <div id="lens-content"></div>
@@ -88,27 +90,27 @@
     <footer class="vessel-footer">
         <nav id="instrument-nav" class="rollout-nav">
             <span class="selector-label">Instruments:</span>
-            <div class="instrument-trigger" onclick="location.hash='instruments/heliclock'">
+            <div class="instrument-trigger" data-hash="instruments/heliclock">
                 <span class="inst-icon">H</span>
                 <span class="inst-label">HeliClock</span>
             </div>
-            <div class="instrument-trigger" onclick="location.hash='instruments/life-strap'">
+            <div class="instrument-trigger" data-hash="instruments/life-strap">
                 <span class="inst-icon">L</span>
                 <span class="inst-label">Life-Strap</span>
             </div>
-            <div class="instrument-trigger" onclick="location.hash='instruments/resonance-pulse'">
+            <div class="instrument-trigger" data-hash="instruments/resonance-pulse">
                 <span class="inst-icon">R</span>
                 <span class="inst-label">Resonance</span>
             </div>
-            <div class="instrument-trigger" onclick="location.hash='instruments/besearch'">
+            <div class="instrument-trigger" data-hash="instruments/besearch">
                 <span class="inst-icon">B</span>
                 <span class="inst-label">Besearch</span>
             </div>
-            <div class="instrument-trigger" onclick="location.hash='instruments/beebee'">
+            <div class="instrument-trigger" data-hash="instruments/beebee">
                 <span class="inst-icon">D</span>
                 <span class="inst-label">Dialogue</span>
             </div>
-            <div class="instrument-trigger" onclick="location.hash='instruments/hop-security'">
+            <div class="instrument-trigger" data-hash="instruments/hop-security">
                 <span class="inst-icon">P</span>
                 <span class="inst-label">Privacy</span>
             </div>

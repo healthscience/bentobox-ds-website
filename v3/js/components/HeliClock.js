@@ -68,12 +68,12 @@ export class HeliClock extends HTMLElement {
         <style>
             :host { display: block; width: 100%; aspect-ratio: 1; }
             svg { width: 100%; height: 100%; overflow: visible; }
-            .track { fill: none; stroke: var(--color-slate-ghost, #2F3E46); stroke-width: 0.5; opacity: 0.3; }
-            .arc-year { fill: none; stroke: var(--color-moss-light, #8A9A5B); stroke-width: 2; opacity: 0.6; }
-            .arc-day { fill: none; stroke: var(--color-solar-amber, #f59e0b); stroke-width: 3; }
+            .track { fill: none; stroke: var(--text-primary); stroke-width: 0.5; opacity: 0.1; }
+            .arc-year { fill: none; stroke: var(--color-moss-light); stroke-width: 2; opacity: 0.6; }
+            .arc-day { fill: none; stroke: var(--color-solar-amber); stroke-width: 3; }
             .sun-year { fill: var(--color-moss-light); filter: blur(1px); }
             .sun-day { fill: var(--color-solar-amber); filter: drop-shadow(0 0 5px var(--color-solar-amber)); }
-            .center-point { fill: var(--color-slate-ghost); opacity: 0.5; }
+            .center-point { fill: var(--text-primary); opacity: 0.3; }
         </style>
         <svg viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="46" class="track" />

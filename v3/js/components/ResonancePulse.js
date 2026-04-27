@@ -20,35 +20,66 @@ export class ResonancePulse extends HTMLElement {
             const rad = (cue.angle - 90) * (Math.PI / 180);
             const x = r * Math.cos(rad);
             const y = r * Math.sin(rad);
-            return `<circle class="cue-point ${cue.orbit}" cx="${x}" cy="${y}" r="1.5" />`;
+            return `<circle class="cue-point ${cue.orbit} pulse" cx="${x}" cy="${y}" r="1.5" />`;
         }).join('');
 
         this.shadowRoot.innerHTML = `
         <style>
             :host { display: block; width: 100%; aspect-ratio: 1; }
             svg { width: 100%; height: 100%; overflow: visible; }
-            .orbit-ring { fill: none; stroke: rgba(255, 255, 255, 0.1); stroke-width: 0.5; }
-            .metabolic-ring { stroke: #ff4d4d; opacity: 0.3; }
-            .ecological-ring { stroke: #40e0ff; opacity: 0.3; }
-            .economic-ring { stroke: #b6ff3b; opacity: 0.3; }
+            .orbit-ring { fill: none; stroke: var(--text-primary); stroke-width: 0.5; opacity: 0.1; }
+            .metabolic-ring { stroke: var(--color-solar-amber); opacity: 0.3; }
+            .environment-ring { stroke: var(--text-primary); opacity: 0.2; }
+            .ecological-ring { stroke: var(--color-resonance-glow); opacity: 0.3; }
+            .economic-ring { stroke: var(--color-cyber-lime); opacity: 0.3; }
             
-            .cue-point { filter: drop-shadow(0 0 3px currentColor); }
-            .cue-point.metabolic { fill: #ff4d4d; }
-            .cue-point.environment { fill: #ffffff; }
-            .cue-point.ecological { fill: #40e0ff; }
-            .cue-point.economic { fill: #b6ff3b; }
+            .cue-point { filter: url(#glow); }
+            .cue-point.metabolic { fill: var(--color-solar-amber); }
+            .cue-point.environment { fill: var(--text-primary); }
+            .cue-point.ecological { fill: var(--color-resonance-glow); }
+            .cue-point.economic { fill: var(--color-cyber-lime); }
 
             .resonance-spoke {
-                stroke: var(--color-resonance-glow, #00FFC2);
+                stroke: var(--color-resonance-glow);
                 stroke-width: 0.5;
                 opacity: 0.5;
+                filter: url(#glow);
+            }
+
+            .solar-hand {
+                stroke: var(--text-primary);
+                stroke-width: 1;
+                opacity: 0.8;
+                filter: url(#glow);
+            }
+
+            .pulse {
+                animation: soft-glow 2s infinite ease-in-out;
+            }
+
+            @keyframes soft-glow {
+                0%, 100% { opacity: 0.6; transform: scale(1); }
+                50% { opacity: 1; transform: scale(1.2); }
             }
         </style>
         <svg viewBox="-50 -50 100 100">
+            <defs>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="1.2" result="coloredBlur"></feGaussianBlur>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"></feMergeNode>
+                        <feMergeNode in="SourceGraphic"></feMergeNode>
+                    </feMerge>
+                </filter>
+            </defs>
+
             <circle class="orbit-ring economic-ring" r="42" />
             <circle class="orbit-ring ecological-ring" r="32" />
-            <circle class="orbit-ring environment-ring" r="22" />
+            <circle class="orbit-ring environment-ring indoor" r="22" />
             <circle class="orbit-ring metabolic-ring" r="12" />
+
+            <line x1="0" y1="0" x2="31.9" y2="-27.3" class="resonance-spoke"></line>
+            <line x1="0" y1="0" x2="31.8" y2="-31.8" class="solar-hand"></line>
 
             <g id="cues-layer">
                 ${cuesMarkup}

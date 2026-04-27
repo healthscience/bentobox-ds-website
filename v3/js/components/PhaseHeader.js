@@ -61,7 +61,7 @@ export class PhaseHeader extends HTMLElement {
                 align-items: center;
                 gap: 4rem;
                 transition: all 0.5s ease;
-                margin-bottom: 3rem;
+                margin-bottom: 2rem;
             }
 
             .phase-rail.collapsed {
@@ -76,11 +76,15 @@ export class PhaseHeader extends HTMLElement {
                 letter-spacing: 8px;
                 color: var(--text-secondary);
                 opacity: 0.2;
-                transition: all 0.8s var(--transition-easing, ease);
-                padding: 1.5rem 3rem;
+                transition: all 0.5s var(--transition-easing, ease);
+                padding: 1rem 2rem;
                 border: 1px solid transparent;
                 cursor: pointer;
                 position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 4px;
             }
 
             .phase-rail.collapsed .phase-item {
@@ -90,9 +94,32 @@ export class PhaseHeader extends HTMLElement {
             }
 
             .phase-item:hover {
-                opacity: 0.6;
-                color: var(--color-resonance-glow);
+                opacity: 0.8;
+                color: var(--color-cyber-lime);
                 letter-spacing: 10px;
+                background: var(--glass-bg);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .phase-item:active {
+                transform: translateY(0) scale(0.98);
+            }
+
+            .directive-label {
+                font-family: var(--font-mono);
+                font-size: 0.7rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--color-resonance-glow);
+                opacity: 0.4;
+                margin-right: 2rem;
+                white-space: nowrap;
+            }
+
+            .phase-rail.collapsed .directive-label {
+                margin-right: 1rem;
+                font-size: 0.6rem;
             }
 
             .phase-braid {
@@ -118,9 +145,8 @@ export class PhaseHeader extends HTMLElement {
             /* Active State: Vibrant Yellow-Green Glow */
             .phase-item.active {
                 opacity: 1 !important;
-                color: #e2ff3b !important; /* Cyber Lime / Yellow-Green */
-                text-shadow: 0 0 30px rgba(226, 255, 59, 0.8),
-                             0 0 60px rgba(226, 255, 59, 0.3);
+                color: var(--color-cyber-lime) !important;
+                text-shadow: 0 0 30px var(--color-cyber-lime);
                 transform: scale(1.2);
                 letter-spacing: 12px;
             }
@@ -128,7 +154,7 @@ export class PhaseHeader extends HTMLElement {
             .phase-rail.collapsed .phase-item.active {
                 transform: scale(1.1);
                 letter-spacing: 6px;
-                text-shadow: 0 0 15px rgba(226, 255, 59, 0.8);
+                text-shadow: 0 0 15px var(--color-cyber-lime);
             }
 
             .phase-item.active::after {
@@ -138,14 +164,14 @@ export class PhaseHeader extends HTMLElement {
                 left: 10%;
                 right: 10%;
                 height: 3px;
-                background: #e2ff3b;
-                box-shadow: 0 0 20px #e2ff3b;
+                background: var(--color-cyber-lime);
+                box-shadow: 0 0 20px var(--color-cyber-lime);
             }
 
             /* Dynamic braid resonance when active */
             .phase-item.active + .phase-braid .braid-line,
             .phase-braid:has(+ .phase-item.active) .braid-line {
-                stroke: #e2ff3b;
+                stroke: var(--color-cyber-lime);
                 stroke-width: 2;
                 opacity: 0.5;
             }
@@ -159,7 +185,11 @@ export class PhaseHeader extends HTMLElement {
                 animation: bio-pulse 4s infinite ease-in-out;
             }
 
-            /* Attunement Section */
+            :host(.collapsed) .attunement-section,
+            :host(.collapsed) .sequence-section {
+                display: none;
+            }
+
             .attunement-section {
                 max-width: 1200px;
                 width: 90%;
@@ -169,14 +199,10 @@ export class PhaseHeader extends HTMLElement {
                 transition: all 0.5s ease;
                 opacity: 1;
                 transform: translateY(0);
-            }
-
-            .phase-rail.collapsed + .attunement-section {
-                opacity: 0;
-                pointer-events: none;
-                transform: translateY(20px);
-                height: 0;
-                overflow: hidden;
+                background: transparent;
+                position: relative;
+                z-index: 1;
+                margin: 4rem auto;
             }
 
             .attunement-left {
@@ -185,7 +211,7 @@ export class PhaseHeader extends HTMLElement {
 
             .attunement-right {
                 flex: 1;
-                border-left: 1px solid rgba(226, 255, 59, 0.2);
+                border-left: 1px solid var(--border-color);
                 padding-left: 2rem;
                 display: flex;
                 flex-direction: column;
@@ -197,7 +223,7 @@ export class PhaseHeader extends HTMLElement {
                 font-size: 1.8rem;
                 letter-spacing: 6px;
                 text-transform: uppercase;
-                color: var(--text-primary, #fff);
+                color: var(--text-primary);
                 margin-bottom: 2rem;
                 opacity: 0.9;
             }
@@ -217,7 +243,7 @@ export class PhaseHeader extends HTMLElement {
                 font-size: 0.9rem;
                 letter-spacing: 3px;
                 text-transform: uppercase;
-                color: #e2ff3b;
+                color: var(--color-cyber-lime);
                 margin-bottom: 1.5rem;
                 opacity: 0.8;
             }
@@ -241,7 +267,7 @@ export class PhaseHeader extends HTMLElement {
             }
 
             .substrate-item:hover {
-                color: #e2ff3b;
+                color: var(--color-cyber-lime);
                 transform: translateX(5px);
             }
 
@@ -274,9 +300,9 @@ export class PhaseHeader extends HTMLElement {
             }
 
             .modal-content {
-                background: linear-gradient(135deg, rgba(20, 25, 20, 0.95), rgba(10, 15, 10, 0.98));
-                border: 1px solid rgba(226, 255, 59, 0.3);
-                box-shadow: 0 0 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(226, 255, 59, 0.1);
+                background: var(--bg-primary);
+                border: 1px solid var(--border-color);
+                box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
                 padding: 3rem;
                 max-width: 600px;
                 width: 90%;
@@ -300,7 +326,7 @@ export class PhaseHeader extends HTMLElement {
             }
 
             .close-modal:hover {
-                color: #e2ff3b;
+                color: var(--color-cyber-lime);
             }
 
             .modal-title {
@@ -308,18 +334,18 @@ export class PhaseHeader extends HTMLElement {
                 font-size: 1.5rem;
                 letter-spacing: 4px;
                 text-transform: uppercase;
-                color: #e2ff3b;
+                color: var(--color-cyber-lime);
                 margin-bottom: 2rem;
-                border-bottom: 1px solid rgba(226, 255, 59, 0.2);
+                border-bottom: 1px solid var(--border-color);
                 padding-bottom: 1rem;
             }
 
             .download-link-btn {
                 display: inline-block;
                 padding: 1rem 2rem;
-                background: rgba(226, 255, 59, 0.1);
-                border: 1px solid #e2ff3b;
-                color: #e2ff3b;
+                background: var(--glass-bg);
+                border: 1px solid var(--color-cyber-lime);
+                color: var(--color-cyber-lime);
                 font-family: var(--font-humanist);
                 text-decoration: none;
                 letter-spacing: 2px;
@@ -329,9 +355,9 @@ export class PhaseHeader extends HTMLElement {
             }
 
             .download-link-btn:hover {
-                background: #e2ff3b;
-                color: #000;
-                box-shadow: 0 0 20px rgba(226, 255, 59, 0.4);
+                background: var(--color-cyber-lime);
+                color: var(--bg-primary);
+                box-shadow: 0 0 20px var(--color-cyber-lime);
             }
 
             .verification-grid {
@@ -341,13 +367,13 @@ export class PhaseHeader extends HTMLElement {
                 font-family: monospace;
                 font-size: 0.85rem;
                 color: var(--text-secondary);
-                background: rgba(0, 0, 0, 0.3);
+                background: var(--glass-bg);
                 padding: 1.5rem;
                 border-radius: 4px;
             }
 
             .verify-label {
-                color: #e2ff3b;
+                color: var(--color-cyber-lime);
                 opacity: 0.6;
                 text-transform: uppercase;
                 font-size: 0.7rem;
@@ -358,8 +384,66 @@ export class PhaseHeader extends HTMLElement {
                 word-break: break-all;
                 opacity: 0.8;
             }
+
+            .sequence-section {
+                max-width: 1200px;
+                width: 90%;
+                margin: 4rem auto;
+                border-top: 1px solid var(--border-color);
+                padding-top: 3rem;
+                transition: all 0.5s ease;
+                background: transparent;
+                position: relative;
+                z-index: 1;
+            }
+
+            .sequence-title {
+                font-family: var(--font-humanist);
+                font-size: 1.2rem;
+                letter-spacing: 5px;
+                text-transform: uppercase;
+                color: var(--color-cyber-lime);
+                margin-bottom: 2rem;
+                opacity: 0.9;
+            }
+
+            .sequence-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2.5rem;
+            }
+
+            .sequence-item {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .sequence-step {
+                font-family: var(--font-humanist);
+                font-size: 0.8rem;
+                color: var(--color-cyber-lime);
+                opacity: 0.6;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+
+            .sequence-header {
+                font-family: var(--font-humanist);
+                font-size: 1.1rem;
+                color: var(--text-primary);
+                letter-spacing: 1px;
+            }
+
+            .sequence-body {
+                font-size: 0.9rem;
+                line-height: 1.6;
+                color: var(--text-secondary);
+                opacity: 0.8;
+            }
         </style>
         <div class="phase-rail">
+            <span class="directive-label">Prime Directive</span>
             <span class="phase-item" data-phase="story">Story</span>
             <svg class="phase-braid" viewBox="0 0 100 20">
                 <path class="braid-line" d="M0,10 Q50,0 100,10" />
@@ -378,6 +462,8 @@ export class PhaseHeader extends HTMLElement {
                 <p class="attunement-text">
                     Life is not a rehearsal; it is the real-player game. Attunement is the sovereign inhabitation of health from the inside. This is the actualization of resonance—the movement beyond the passive practice of medicine into the active witness of the Resonance Pulse. By aligning with Gaia Intelligences, the role shifts from passenger to primary player. On this substrate, health is not a commodity to be obtained; it is the score written into the weave of the living way.
                 </p>
+                <div>
+                </div>
             </div>
             <div class="attunement-right">
                 <h3 class="download-heading">Select Substrate</h3>
@@ -385,6 +471,33 @@ export class PhaseHeader extends HTMLElement {
                     <div class="substrate-item" data-os="linux">Linux</div>
                     <div class="substrate-item" data-os="macos">Mac</div>
                     <div class="substrate-item" data-os="windows">Windows</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sequence-section">
+            <h2 class="sequence-title">The Sequence of Attunement</h2>
+            <div class="sequence-grid">
+                <div class="sequence-item">
+                    <span class="sequence-step">Step 01</span>
+                    <h3 class="sequence-header">Story: The Spark of Intent</h3>
+                    <p class="sequence-body">
+                        Before the code or the pulse, there is the narrative. Story is the "Zero-Draft" of health—it is the Peer witnessing a feeling, a symptom, or a desire for alignment and naming it. In the real-player game, the Story is the quest log; it sets the direction for the Gaia Intelligences to follow.
+                    </p>
+                </div>
+                <div class="sequence-item">
+                    <span class="sequence-step">Step 02</span>
+                    <h3 class="sequence-header">Interplay: The Collaborative Weaver</h3>
+                    <p class="sequence-body">
+                        Once the Story is told, it enters the Interplay. This is the nucleus where the Peer’s intent meets the biological math of the Heli-Sync and the social resonance of the community. It is the active "messy middle" where we couple components, test logic in the playground, and negotiate our rhythm with the bioregion.
+                    </p>
+                </div>
+                <div class="sequence-item">
+                    <span class="sequence-step">Step 03</span>
+                    <h3 class="sequence-header">Emulation: The Living Proof</h3>
+                    <p class="sequence-body">
+                        Emulation is the final state where the Story becomes a physical Pulse. It is the movement from "thinking about health" to "being the resonance." Through the SafeFlow-ECS and Melding hardware, the logic is no longer just on a screen; it is emulated in the cells. The map and the territory become one.
+                    </p>
                 </div>
             </div>
         </div>

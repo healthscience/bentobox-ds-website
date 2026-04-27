@@ -21,11 +21,10 @@ export class BentoQuadrant extends HTMLElement {
     }
 
     render() {
-        const title = this.getAttribute('title') || '';
-        const subtitle = this.getAttribute('subtitle') || '';
-        const type = this.getAttribute('type') || ''; // tl, tr, bl, br
         const collapsed = this.hasAttribute('collapsed');
         const active = this.hasAttribute('active');
+        const title = this.getAttribute('title') || '';
+        const subtitle = this.getAttribute('subtitle') || '';
 
         this.shadowRoot.innerHTML = `
         <style>
@@ -33,21 +32,20 @@ export class BentoQuadrant extends HTMLElement {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                border: 1px solid var(--border-color, rgba(255, 255, 255, 0.05));
+                border: 1px solid var(--border-color);
                 transition: all var(--transition-speed, 0.6s) var(--transition-easing, ease);
                 cursor: pointer;
                 overflow: hidden;
                 position: relative;
-                background-color: var(--bg-primary);
-                min-height: ${collapsed ? '60px' : 'auto'};
+                background: transparent;
             }
 
             :host(:hover) {
-                background: rgba(255, 255, 255, 0.02);
+                background: var(--glass-bg);
             }
 
             :host([active]) {
-                background: rgba(255, 255, 255, 0.05);
+                background: var(--glass-bg);
                 border-color: var(--active-color, var(--color-resonance-glow));
             }
 
@@ -63,7 +61,7 @@ export class BentoQuadrant extends HTMLElement {
                 font-size: ${collapsed ? '0.8rem' : '1.5rem'};
                 margin-bottom: ${collapsed ? '0' : '0.5rem'};
                 font-weight: 300;
-                color: var(--text-primary, white);
+                color: var(--text-primary);
                 text-transform: ${collapsed ? 'uppercase' : 'none'};
                 letter-spacing: ${collapsed ? '1px' : 'normal'};
             }
@@ -72,7 +70,7 @@ export class BentoQuadrant extends HTMLElement {
                 display: ${collapsed ? 'none' : 'block'};
                 font-family: var(--font-mono, monospace);
                 font-size: 0.8rem;
-                color: var(--color-moss-light, #8A9A5B);
+                color: var(--text-secondary);
                 text-transform: uppercase;
                 letter-spacing: 1px;
             }
