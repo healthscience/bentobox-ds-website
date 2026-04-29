@@ -25,6 +25,52 @@ class BentoApp {
         this.nucleus = document.getElementById('nucleus');
         
         this.currentContext = 'swimming';
+        this.previousHash = ''; // Track state before entering an instrument
+
+        this.instruments = {
+            'heliclock': {
+                title: 'HeliClock',
+                purpose: 'Biological Empathy / Solar Alignment / Scientific foundations for time.',
+                math: 'Aligns your internal rhythm with the solar cycle using Von Mises geometry to map circadian phase.',
+                graft: 'INITIALIZE THIS EXPERIENCE IN BENTOBOX V2',
+                guide: 'The HeliClock aligns your biological rhythm with the solar cycle. Use this to track your circadian phase and stay in sync with the sun.'
+            },
+            'life-strap': {
+                title: 'The life-strap scheduler',
+                purpose: 'Extract capacity, context & coherence.',
+                math: 'Calculates energy requirements, data contexts, and modeling parameters for the Sovereign ID.',
+                graft: 'INITIALIZE THIS EXPERIENCE IN BENTOBOX V2',
+                guide: 'The Life-Strap scheduler maps your metabolic capacity against environmental demands. Start by recording your morning vitals.'
+            },
+            'resonance-pulse': {
+                title: 'ResonancePulse',
+                purpose: 'Geometric Emulation (Von Mises).',
+                math: 'Visualizes the density of your life-rhythms based on a consilience weave of metabolic, environment, ecological, and economic orbits.',
+                graft: 'INITIALIZE THIS EXPERIENCE IN BENTOBOX V2',
+                guide: 'ResonancePulse visualizes the harmony between your internal orbits and external rhythms. Observe the pulse density to find your flow.'
+            },
+            'besearch': {
+                title: 'Besearch',
+                purpose: 'A new scientific method for understanding the world.',
+                math: 'Sets context data, grounds in research, explores and searches new ideas, warming emulations to understand resonance.',
+                graft: 'INITIALIZE THIS EXPERIENCE IN BENTOBOX V2',
+                guide: 'Besearch is a living cycle of inquiry. Use it to explore new ideas, set context, and ground your health journey in research.'
+            },
+            'beebee': {
+                title: 'beebee Dialogue & TINY agents',
+                purpose: 'Sovereign Wisdom Capture via BeeBee.',
+                math: 'Captures thoughts without friction and manages TINY agents to facilitate Wisdom Capture.',
+                graft: 'INITIALIZE THIS EXPERIENCE IN BENTOBOX V2',
+                guide: 'BeeBee facilitates Sovereign Wisdom Capture. Engage in dialogue to process your thoughts and direct your TINY agents.'
+            },
+            'hop-security': {
+                title: 'HOP Privacy & Security',
+                purpose: 'BentoBoxDS is a local first toolkit.',
+                math: 'The HOP (health oracle protocol) establishes trust when working towards coherence with other peers and agents.',
+                graft: 'INITIALIZE THIS EXPERIENCE IN BENTOBOX V2',
+                guide: 'HOP ensures your data remains local and secure. Review your security settings to establish trust with other peers.'
+            }
+        };
 
         // Wait for Custom Elements to be ready
         Promise.all([
@@ -88,17 +134,23 @@ class BentoApp {
         }
 
         // Instrument Nav Toggling
-        const attachInstrumentListeners = (container) => {
+        this.attachInstrumentListeners = (container) => {
             if (!container) return;
             container.querySelectorAll('.instrument-trigger').forEach(trigger => {
                 const targetHash = trigger.getAttribute('data-hash');
                 if (targetHash) {
                     trigger.addEventListener('click', (e) => {
-                        console.log('Instrument footer clicked:', targetHash);
                         const currentHash = window.location.hash.replace('#', '');
+                        console.log('Instrument clicked:', targetHash, 'Current:', currentHash);
+                        
                         if (currentHash === targetHash) {
-                            window.location.hash = ''; 
+                            // Toggle off: return to previous state
+                            window.location.hash = this.previousHash;
                         } else {
+                            // If we're not already in an instrument, save the current state
+                            if (!currentHash.startsWith('instruments/')) {
+                                this.previousHash = currentHash;
+                            }
                             window.location.hash = targetHash;
                         }
                     });
@@ -106,7 +158,7 @@ class BentoApp {
             });
         };
 
-        attachInstrumentListeners(document.querySelector('.vessel-footer'));
+        this.attachInstrumentListeners(document.querySelector('.vessel-footer'));
 
         // Phase Header Navigation
         if (this.phaseHeader) {
@@ -157,6 +209,13 @@ class BentoApp {
     route() {
         const hash = window.location.hash.replace('#', '');
         
+        // Track previous state for non-instrument hashes
+        if (hash && !hash.startsWith('instruments/')) {
+            this.previousHash = hash;
+        } else if (!hash) {
+            this.previousHash = '';
+        }
+
         if (!hash) {
             this.showHub();
             this.phaseHeader.removeAttribute('active-phase');
@@ -354,12 +413,44 @@ class BentoApp {
             `;
         }
 
+        // Handle Instruments content in body
+        if (isInstrument) {
+            const instKey = hash.split('/')[1];
+            const inst = this.instruments[instKey];
+            if (inst) {
+                content = `
+                    <div class="instrument-rollout">
+                        <div class="rollout-left">
+                            <div class="inst-large-icon">${inst.title[0]}</div>
+                        </div>
+                        <div class="rollout-right">
+                            <div class="inst-section">
+                                <h4>Instrument</h4>
+                                <p class="inst-name">${inst.title}</p>
+                            </div>
+                            <div class="inst-section">
+                                <h4>Purpose</h4>
+                                <p>${inst.purpose}</p>
+                            </div>
+                            <div class="inst-section">
+                                <h4>How it Works</h4>
+                                <p class="mono-text">${inst.math}</p>
+                            </div>
+                            <div class="graft-action">
+                                <button class="graft-btn" onclick="console.log('Grafting to BentoBox V2...')">${inst.graft}</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
         const hideHeader = (hash === 'now-me' && phase === 'story');
 
         this.lensContent.innerHTML = `
             <div class="lens-header" style="${hideHeader ? 'display:none' : ''}">
                 <div class="lens-title-row">
-                    <h1 class="lens-title">${title}</h1>
+                    <h1 class="lens-title">${isInstrument ? 'Instrument: ' + title : title}</h1>
                     ${!isSanctuary ? `<span class="phase-badge">${phase.toUpperCase()} MODE</span>` : ''}
                 </div>
                 <div class="lens-divider"></div>
@@ -371,13 +462,23 @@ class BentoApp {
 
         // Guidebook Text
         let guideText = '';
+        let guideTitle = `${phase.toUpperCase()} Mode`;
+
         if (isSanctuary) {
             if (this.guidebook) this.guidebook.style.display = 'none';
             if (this.lensInstruments) this.lensInstruments.style.display = 'none';
         } else {
             if (this.guidebook) this.guidebook.style.display = 'block';
             if (this.lensInstruments) this.lensInstruments.style.display = 'flex';
-            if (phase === 'story') {
+            
+            if (isInstrument) {
+                const instKey = hash.split('/')[1];
+                const inst = this.instruments[instKey];
+                if (inst) {
+                    guideTitle = inst.title;
+                    guideText = inst.guide;
+                }
+            } else if (phase === 'story') {
                 guideText = 'Start with a lifestrap story and dialgoue with beebee to build context.';
             } else if (phase === 'interplay') {
                 guideText = 'Teach beebee the capacity, context, heli projections and attunement. Attunement means ....';
@@ -386,7 +487,7 @@ class BentoApp {
             }
 
             this.guidebook.innerHTML = `
-                <h4>Guidebook: ${phase.toUpperCase()} Mode</h4>
+                <h4>Guidebook: ${guideTitle}</h4>
                 <p>${guideText}</p>
             `;
         }
@@ -409,18 +510,7 @@ class BentoApp {
 
         // Re-attach listeners for the new triggers
         if (this.lensInstruments) {
-            this.lensInstruments.querySelectorAll('.instrument-trigger').forEach(trigger => {
-                const targetHash = trigger.getAttribute('data-hash');
-                trigger.addEventListener('click', (e) => {
-                    console.log('Lens instrument clicked:', targetHash);
-                    const currentHash = window.location.hash.replace('#', '');
-                    if (currentHash === targetHash) {
-                        window.location.hash = ''; 
-                    } else {
-                        window.location.hash = targetHash;
-                    }
-                });
-            });
+            this.attachInstrumentListeners(this.lensInstruments);
         }
     }
 
@@ -437,74 +527,9 @@ class BentoApp {
 
         this.lensOverlay.classList.add('active');
         this.lensOverlay.classList.add('instrument-view');
-        this.renderLens(`Instrument: ${name}`);
         
-        const instruments = {
-            'heliclock': {
-                title: 'HeliClock',
-                purpose: 'Biological Empathy / Solar Alignment / Scientific foundations for time.',
-                math: 'Aligns your internal rhythm with the solar cycle using Von Mises geometry to map circadian phase.',
-                graft: 'INITIALIZE THIS EXPERIENCE IN BENTOBOX V2'
-            },
-            'life-strap': {
-                title: 'The life-strap scheduler',
-                purpose: 'Extract capacity, context & coherence.',
-                math: 'Calculates energy requirements, data contexts, and modeling parameters for the Sovereign ID.',
-                graft: 'INITIALIZE THIS EXPERIENCE IN BENTOBOX V2'
-            },
-            'resonance-pulse': {
-                title: 'ResonancePulse',
-                purpose: 'Geometric Emulation (Von Mises).',
-                math: 'Visualizes the density of your life-rhythms based on a consilience weave of metabolic, environment, ecological, and economic orbits.',
-                graft: 'INITIALIZE THIS EXPERIENCE IN BENTOBOX V2'
-            },
-            'besearch': {
-                title: 'Besearch',
-                purpose: 'A new scientific method for understanding the world.',
-                math: 'Sets context data, grounds in research, explores and searches new ideas, warming emulations to understand resonance.',
-                graft: 'INITIALIZE THIS EXPERIENCE IN BENTOBOX V2'
-            },
-            'beebee': {
-                title: 'beebee Dialogue & TINY agents',
-                purpose: 'Sovereign Wisdom Capture via BeeBee.',
-                math: 'Captures thoughts without friction and manages TINY agents to facilitate Wisdom Capture.',
-                graft: 'INITIALIZE THIS EXPERIENCE IN BENTOBOX V2'
-            },
-            'hop-security': {
-                title: 'HOP Privacy & Security',
-                purpose: 'BentoBoxDS is a local first toolkit.',
-                math: 'The HOP (health oracle protocol) establishes trust when working towards coherence with other peers and agents.',
-                graft: 'INITIALIZE THIS EXPERIENCE IN BENTOBOX V2'
-            }
-        };
-
-        const inst = instruments[name];
-        if (inst) {
-            this.lensContent.innerHTML = `
-                <div class="instrument-rollout">
-                    <div class="rollout-left">
-                        <div class="inst-large-icon">${inst.title[0]}</div>
-                    </div>
-                    <div class="rollout-right">
-                        <div class="inst-section">
-                            <h4>Instrument</h4>
-                            <p class="inst-name">${inst.title}</p>
-                        </div>
-                        <div class="inst-section">
-                            <h4>Purpose</h4>
-                            <p>${inst.purpose}</p>
-                        </div>
-                        <div class="inst-section">
-                            <h4>How it Works</h4>
-                            <p class="mono-text">${inst.math}</p>
-                        </div>
-                        <div class="graft-action">
-                            <button class="graft-btn" onclick="console.log('Grafting to BentoBox V2...')">${inst.graft}</button>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
+        const inst = this.instruments[name];
+        this.renderLens(inst ? inst.title : name);
     }
 }
 

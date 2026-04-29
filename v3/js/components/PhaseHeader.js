@@ -441,6 +441,62 @@ export class PhaseHeader extends HTMLElement {
                 color: var(--text-secondary);
                 opacity: 0.8;
             }
+
+            @media (max-width: 768px) {
+                :host {
+                    padding: 1rem 0;
+                }
+                .phase-rail {
+                    gap: 1.5rem;
+                }
+                .phase-rail.collapsed {
+                    gap: 1rem;
+                }
+                .phase-item {
+                    font-size: 1.2rem;
+                    letter-spacing: 4px;
+                    padding: 0.5rem 1rem;
+                }
+                .phase-rail.collapsed .phase-item {
+                    font-size: 0.7rem;
+                    letter-spacing: 2px;
+                }
+                .directive-label {
+                    display: none; /* Hide directive label on mobile to save space */
+                }
+                .phase-braid {
+                    width: 50px;
+                }
+                .phase-rail.collapsed .phase-braid {
+                    width: 30px;
+                }
+                .attunement-section {
+                    flex-direction: column;
+                    gap: 2rem;
+                }
+                .attunement-left, .attunement-right {
+                    flex: none;
+                    width: 100%;
+                }
+                .attunement-right {
+                    border-left: none;
+                    border-top: 1px solid var(--border-color);
+                    padding-left: 0;
+                    padding-top: 2rem;
+                }
+                .attunement-title {
+                    font-size: 1.4rem;
+                }
+                .sequence-grid {
+                    grid-template-columns: 1fr;
+                }
+                .modal-content {
+                    padding: 1.5rem;
+                }
+                .modal-title {
+                    font-size: 1.2rem;
+                }
+            }
         </style>
         <div class="phase-rail">
             <span class="directive-label">Prime Directive</span>

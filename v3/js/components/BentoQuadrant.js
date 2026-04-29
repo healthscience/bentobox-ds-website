@@ -98,6 +98,15 @@ export class BentoQuadrant extends HTMLElement {
             :host([type="tr"]) .texture { background: radial-gradient(circle at top right, var(--color-solar-amber), transparent 70%); }
             :host([type="bl"]) .texture { background: radial-gradient(circle at bottom left, var(--color-resonance-glow), transparent 70%); }
             :host([type="br"]) .texture { background: radial-gradient(circle at bottom right, var(--color-slate-ghost), transparent 70%); }
+
+            @media (max-width: 768px) {
+                h2 {
+                    font-size: ${collapsed ? '0.7rem' : '1.2rem'};
+                }
+                .subtitle {
+                    font-size: 0.7rem;
+                }
+            }
         </style>
         <div class="texture"></div>
         <div class="content">
