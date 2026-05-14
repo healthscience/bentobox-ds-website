@@ -185,6 +185,12 @@ class BentoApp {
         const isLight = body.classList.toggle('light-mode', init ? (localStorage.getItem('theme') === 'light') : !body.classList.contains('light-mode'));
         localStorage.setItem('theme', isLight ? 'light' : 'dark');
         
+        // Sync PhaseHeader (Shadow DOM)
+        const phaseHeader = document.getElementById('prime-directive') || document.querySelector('phase-header');
+        if (phaseHeader) {
+            phaseHeader.setAttribute('theme', isLight ? 'light' : 'dark');
+        }
+
         if (isLight) {
             if (this.sunIcon) this.sunIcon.classList.remove('hidden');
             if (this.moonIcon) this.moonIcon.classList.add('hidden');
@@ -356,6 +362,9 @@ class BentoApp {
                         <div class="manifesto-text">
                             <p>At the dawn of super-intelligence, we align with science's living roots: a besearch method—our living cycle of inquiry—where each Peer's breath naturally redraws the map of truth. Here, Gaia intelligences guide every cell toward sovereign health, anchoring the individual pulse into the measurable rhythm of the community and the bioregion.</p>
                             <p>This is the Attunement of health. Entering BentoBoxDS is like stepping onto an uncharted continent: It is a Biological Navigation System designed to inhabit this living way.</p>
+                            <p>
+                               BentoBoxDS is part of the Health Oracle Protocol Open Source Project <a href="https://healthscience.network" target="_blank" rel="noopener noreferrer" class="hop-link">HOP</a>
+                            </p>
                         </div>
                     </section>
 

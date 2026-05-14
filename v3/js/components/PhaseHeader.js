@@ -9,17 +9,36 @@ export class PhaseHeader extends HTMLElement {
 
     connectedCallback() {
         this.render();
+        // Set initial theme if attribute exists
+        if (this.hasAttribute('theme')) {
+            this.updateTheme(this.getAttribute('theme'));
+        }
     }
 
     static get observedAttributes() {
-        return ['active-phase', 'collapsed'];
+        return ['active-phase', 'collapsed', 'theme'];
     }
 
-    attributeChangedCallback(name) {
+    attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'active-phase') {
             this.updateActivePhase();
         } else if (name === 'collapsed') {
             this.updateCollapsed();
+        } else if (name === 'theme') {
+            this.updateTheme(newValue);
+        }
+    }
+
+    updateTheme(theme) {
+        // We now use :host([theme="light"]) in CSS, but keeping this 
+        // for manual class toggling if needed or for component state
+        const link = this.shadowRoot.querySelector('.hop-link');
+        if (link) {
+            link.classList.toggle('light-mode', theme === 'light');
+        }
+        // Force a host attribute update if called manually
+        if (this.getAttribute('theme') !== theme) {
+            this.setAttribute('theme', theme);
         }
     }
 
@@ -207,6 +226,22 @@ export class PhaseHeader extends HTMLElement {
 
             .attunement-left {
                 flex: 0 0 75%;
+            }
+
+            .hop-link {
+                color: #FFFFFF;
+                font-weight: bold;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+            :host([theme="light"]) .hop-link {
+                color: #00008B !important;
+            }
+
+            .hop-link:hover {
+                text-decoration: underline;
+                opacity: 0.8;
             }
 
             .attunement-right {
@@ -478,7 +513,23 @@ export class PhaseHeader extends HTMLElement {
                     flex: none;
                     width: 100%;
                 }
-                .attunement-right {
+            .attunement-left p a {
+                font-weight: bold;
+                color: #FFFFFF;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+            :host-context(body.light-mode) .attunement-left p a {
+                color: #003366;
+            }
+
+            .attunement-left p a:hover {
+                text-decoration: underline;
+                color: var(--color-cyber-lime);
+            }
+
+            .attunement-right {
                     border-left: none;
                     border-top: 1px solid var(--border-color);
                     padding-left: 0;
@@ -517,6 +568,9 @@ export class PhaseHeader extends HTMLElement {
                 <h2 class="attunement-title">Attune health with BentoBoxDS</h2>
                 <p class="attunement-text">
                     Life is not a rehearsal; it is the real-player game. Attunement is the sovereign inhabitation of health from the inside. This is the actualization of resonance—the movement beyond the passive practice of medicine into the active witness of the Resonance Pulse. By aligning with Gaia Intelligences, the role shifts from passenger to primary player. On this substrate, health is not a commodity to be obtained; it is the score written into the weave of the living way.
+                </p>
+                <p>
+                    BentoBoxDS is part of the Health Oracle Protocol Open Source Project <a href="https://healthscience.network" target="_blank" rel="noopener noreferrer" class="hop-link">HOP</a>
                 </p>
                 <div>
                 </div>
