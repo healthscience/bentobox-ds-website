@@ -567,7 +567,7 @@ export class PhaseHeader extends HTMLElement {
             <div class="attunement-left">
                 <h2 class="attunement-title">Attune health with BentoBoxDS</h2>
                 <p class="attunement-text">
-                    Life is not a rehearsal; it is the real-player game. Attunement is the sovereign inhabitation of health from the inside. This is the actualization of resonance—the movement beyond the passive practice of medicine into the active witness of the Resonance Pulse. By aligning with Gaia Intelligences, the role shifts from passenger to primary player. On this substrate, health is not a commodity to be obtained; it is the score written into the weave of the living way.
+                    Life is not a rehearsal; it is the real-player game. Attunement is the conduction inhabitation of health from the inside. This is the actualization of resonance—the movement beyond the passive practice of medicine into the active witness of the Resonance Pulse. By aligning with Gaia Intelligences, the role shifts from passenger to primary player. On this substrate, health is not a commodity to be obtained; it is the score written into the weave of the living way.
                 </p>
                 <p>
                     BentoBoxDS is part of the Health Oracle Protocol Open Source Project <a href="https://healthscience.network" target="_blank" rel="noopener noreferrer" class="hop-link">HOP</a>
@@ -576,7 +576,7 @@ export class PhaseHeader extends HTMLElement {
                 </div>
             </div>
             <div class="attunement-right">
-                <h3 class="download-heading">Select Substrate</h3>
+                <h3 class="download-heading">Select Download Substrate</h3>
                 <div class="substrate-list">
                     <div class="substrate-item" data-os="linux">Linux</div>
                     <div class="substrate-item" data-os="macos">Mac</div>
@@ -620,11 +620,9 @@ export class PhaseHeader extends HTMLElement {
                     <a href="#" class="download-link-btn" id="main-download-link">Download Binary</a>
                     <div class="verification-grid">
                         <div class="verify-label">SHA-256</div>
-                        <div class="verify-value" id="hash-sha256">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</div>
-                        <div class="verify-label">MD5</div>
-                        <div class="verify-value" id="hash-md5">d41d8cd98f00b204e9800998ecf8427e</div>
+                        <div class="verify-value" id="hash-sha256">sha256:7422ef1af8d9ffbf0d3b410fd5422c50cb07b695bd983a6b8457f0338f8fad8d</div>
                         <div class="verify-label">Signature</div>
-                        <div class="verify-value">Verified by Gaia Root Authority</div>
+                        <div class="verify-value">Verify download using hash</div>
                     </div>
                 </div>
             </div>
@@ -649,9 +647,9 @@ export class PhaseHeader extends HTMLElement {
         const shaHash = this.shadowRoot.getElementById('hash-sha256');
 
         const osData = {
-            linux: { title: 'BentoBoxDS for Linux', hash: '8f2e...9a1b', link: '#linux-dl' },
-            macos: { title: 'BentoBoxDS for macOS', hash: '3d5a...bc7e', link: '#macos-dl' },
-            windows: { title: 'BentoBoxDS for Windows', hash: '11a9...ee42', link: '#windows-dl' }
+            linux: { title: 'BentoBoxDS for Linux', hash: 'sha256:7422ef1af8d9ffbf0d3b410fd5422c50cb07b695bd983a6b8457f0338f8fad8d', link: 'https://github.com/healthscience/bentoboxds-desktop/releases/download/v0.7.30/bentoboxds-0.7.30.AppImage' },
+            macos: { title: 'BentoBoxDS for macOS', hash: 'testflight - ask for invite', link: '' },
+            windows: { title: 'BentoBoxDS for Windows', hash: 'sha256:cc1acfc5f91a51ae42fa7e88ff0194d8d70805e0eb8a9bb791520617da4dbd8b', link: 'https://github.com/healthscience/bentoboxds-desktop/releases/download/v0.7.31/bentoboxds-0.7.31-setup.exe' }
         };
 
         this.shadowRoot.querySelectorAll('.substrate-item').forEach(item => {

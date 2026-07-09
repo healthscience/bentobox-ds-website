@@ -1,5 +1,5 @@
 /**
- * BentoQuadrant: A Sovereign Modular Quadrant
+ * BentoQuadrant: A Bento Modular Quadrant
  * Part of the Boreal Design System
  */
 export class BentoQuadrant extends HTMLElement {

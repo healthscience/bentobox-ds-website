@@ -1,5 +1,5 @@
 /**
- * BentoBoxDS V3: The Sovereign Vessel Interface
+ * BentoBoxDS V3: Gaia Intelligences Shape Health
  * Pure JS / Local-First / Boreal Aesthetic
  */
 
@@ -38,7 +38,7 @@ class BentoApp {
             'life-strap': {
                 title: 'The life-strap scheduler',
                 purpose: 'Extract capacity, context & coherence.',
-                math: 'Calculates energy requirements, data contexts, and modeling parameters for the Sovereign ID.',
+                math: 'Calculates energy requirements, data contexts, and modeling parameters for the peer.',
                 graft: 'INITIALIZE THIS EXPERIENCE IN BENTOBOX V2',
                 guide: 'The Life-Strap scheduler maps your metabolic capacity against environmental demands. Start by recording your morning vitals.'
             },
@@ -58,10 +58,10 @@ class BentoApp {
             },
             'beebee': {
                 title: 'beebee Dialogue & TINY agents',
-                purpose: 'Sovereign Wisdom Capture via BeeBee.',
+                purpose: 'Conduction Wisdom Capture via BeeBee.',
                 math: 'Captures thoughts without friction and manages TINY agents to facilitate Wisdom Capture.',
                 graft: 'INITIALIZE THIS EXPERIENCE IN BENTOBOX V2',
-                guide: 'BeeBee facilitates Sovereign Wisdom Capture. Engage in dialogue to process your thoughts and direct your TINY agents.'
+                guide: 'BeeBee facilitates Conduction Wisdom Capture. Engage in dialogue to process your thoughts and direct your TINY agents.'
             },
             'hop-security': {
                 title: 'HOP Privacy & Security',
@@ -360,7 +360,7 @@ class BentoApp {
                         <h2>Gaia Intelligences Shape Health</h2>
                         <p class="opening-call-subtitle">The Opening Call</p>
                         <div class="manifesto-text">
-                            <p>At the dawn of super-intelligence, we align with science's living roots: a besearch method—our living cycle of inquiry—where each Peer's breath naturally redraws the map of truth. Here, Gaia intelligences guide every cell toward sovereign health, anchoring the individual pulse into the measurable rhythm of the community and the bioregion.</p>
+                            <p>At the dawn of super-intelligence, we align with science's living roots: a besearch method—our living cycle of inquiry—where each Peer's breath naturally redraws the map of truth. Here, Gaia intelligences guide every cell toward health, anchoring the individual pulse into the measurable rhythm of the community and the bioregion.</p>
                             <p>This is the Attunement of health. Entering BentoBoxDS is like stepping onto an uncharted continent: It is a Biological Navigation System designed to inhabit this living way.</p>
                             <p>
                                BentoBoxDS is part of the Health Oracle Protocol Open Source Project <a href="https://healthscience.network" target="_blank" rel="noopener noreferrer" class="hop-link">HOP</a>
@@ -372,7 +372,7 @@ class BentoApp {
                         <h2>Architecture of Participation</h2>
                         <p class="opening-call-subtitle">The Path to the Boreal V2</p>
                         <div class="manifesto-text">
-                            <p>The goal of BentoBoxDS is to generate a Peer experience on the fly. This is not a static dashboard; it is a Sovereign Skeleton that senses the Peer’s coordinates—biological, temporal, and spatial—and assembles a living world in real-time.</p>
+                            <p>The goal of BentoBoxDS is to generate a Peer experience on the fly. This is not a static dashboard; it is a Skeleton that senses the Peer’s coordinates—biological, temporal, and spatial—and assembles a living world in real-time.</p>
                             <p>Life is not a rehearsal; it is a real-player game where Attunement replaces the passive interventions of the old world. This is the PeerStack in motion: where the Algotecture of a home meets the Heli-Sync of the sun and the ResonAgents of the Peer's own cells. The Orrery is active. The map is breathing. The continent is for the Peer to trace.</p>
                             <p>BentoBoxDS is a primary implementation of the Health Oracle Protocol (HOP), an open-source substrate designed for local-first, peer-to-peer life. This is an architecture of participation; peers can couple new experiences directly into the environment by utilizing the Skeleton Documentation and testing metabolic logic within the HOP Playground.</p>
                             <p>Beyond the desktop, the vision involves shrinking the HOP-shim to inhabit mobile apps and tiny devices. Through this Melding process, hardware like vagus-straps or sensing-skin will feed live data into the local SafeFlow-ECS, transforming the BentoBox into a portable, biological compass that keeps the pulse in phase with the Heli-Sync wherever the Peer travels.</p>
@@ -411,7 +411,7 @@ class BentoApp {
             content = `
                 <div class="story-lens">
                     <resonance-pulse mode="${pulseMode}" cues='[{"orbit": "metabolic", "angle": 45}]'></resonance-pulse>
-                    <p class="manifesto" style="margin-top: 2rem;">Initiating the Sovereign Witness for <strong>${this.currentContext}</strong>.</p>
+                    <p class="manifesto" style="margin-top: 2rem;">Initiating the Witness for <strong>${this.currentContext}</strong>.</p>
                 </div>
             `;
         } else if (phase === 'interplay') {
@@ -492,7 +492,7 @@ class BentoApp {
             } else if (phase === 'interplay') {
                 guideText = 'Teach beebee the capacity, context, heli projections and attunement. Attunement means ....';
             } else {
-                guideText = `You are currently exploring the <strong>${this.currentContext}</strong> experience through the lens of <strong>${phase}</strong>. The Sovereign Vessel maps biological resonance against the bioregional coherence ledger.`;
+                guideText = `You are currently exploring the <strong>${this.currentContext}</strong> experience through the lens of <strong>${phase}</strong>. The Conduction Vessel maps biological resonance against the bioregional coherence ledger.`;
             }
 
             this.guidebook.innerHTML = `

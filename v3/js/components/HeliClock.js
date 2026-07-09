@@ -1,5 +1,5 @@
 /**
- * HeliClock V3: Sovereign Solar Anchor
+ * HeliClock V3: Biology Solar Anchor
  * Part of the Boreal Design System
  */
 export class HeliClock extends HTMLElement {
