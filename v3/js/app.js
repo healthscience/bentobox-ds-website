@@ -360,22 +360,68 @@ class BentoApp {
                         <h2>Gaia Intelligences Shape Health</h2>
                         <p class="opening-call-subtitle">The Opening Call</p>
                         <div class="manifesto-text">
-                            <p>At the dawn of super-intelligence, we align with science's living roots: a besearch method—our living cycle of inquiry—where each Peer's breath naturally redraws the map of truth. Here, Gaia intelligences guide every cell toward health, anchoring the individual pulse into the measurable rhythm of the community and the bioregion.</p>
-                            <p>This is the Attunement of health. Entering BentoBoxDS is like stepping onto an uncharted continent: It is a Biological Navigation System designed to inhabit this living way.</p>
+                            <p>Intelligences moves through every scale of life. We anchor directly in the practice of biopoiesis, where mind expresses at every level—from the micro-calculus of cellular membranes and tiny networked devices to the shared awareness of human communities and planetary biomes. Through our besearch cycle, every breath and biological pulse naturally refreshes the map of truth, unifying small, distributed intelligences into a single, cohesive whole..</p>
+
+                            <p>Here, Gaia Intelligences—expressed through solar cycles, light spectrums, and watershed biomes—guide every cell toward vitality, anchoring individual biological pulses into the living rhythm of the community and bioregion.</p>
                             <p>
+                            <p>
+                                This is the attunement of health. Stepping into BentoBoxDS is stepping into a biological navigation environment designed to inhabit this living way
+                            </p>
                                BentoBoxDS is part of the Health Oracle Protocol Open Source Project <a href="https://healthscience.network" target="_blank" rel="noopener noreferrer" class="hop-link">HOP</a>
                             </p>
                         </div>
                     </section>
 
+
+                    <section class="sanctuary-section">
+                        <h2>The BentoBox Horizon: Peer & Community Across Time</h2>
+                        <p>
+                            BentoBoxDS expands health beyond short-term metrics into multi-year generational vitality. It holds living health across four distinct horizons:
+                        </p>
+                        <ul>
+                            <li>Peer Today: Attuning daily biological rhythms, capturing life-strap stories, and feeling immediate metabolic feedback through local conduction instruments.</li>
+
+                            <li>Peer Tomorrow: Building long-term biological resilience, tracking multi-year solar rhythms, and cultivating cumulative vitality across every stage of life.</li>
+
+                            <li>Community Today: Linking nearby peers into watershed cohorts, sharing attuned Cues through hop-osmosis, and holding local resonance circles.</li>
+
+                            <li>Community Tomorrow: Preserving verified health patterns, passing down living wisdom across generations, and safeguarding the long-term health of the whole bioregion.</li>
+                    </section>
+
+
                     <section class="sanctuary-section">
                         <h2>Architecture of Participation</h2>
                         <p class="opening-call-subtitle">The Path to the Boreal V2</p>
                         <div class="manifesto-text">
-                            <p>The goal of BentoBoxDS is to generate a Peer experience on the fly. This is not a static dashboard; it is a Skeleton that senses the Peer’s coordinates—biological, temporal, and spatial—and assembles a living world in real-time.</p>
-                            <p>Life is not a rehearsal; it is a real-player game where Attunement replaces the passive interventions of the old world. This is the PeerStack in motion: where the Algotecture of a home meets the Heli-Sync of the sun and the ResonAgents of the Peer's own cells. The Orrery is active. The map is breathing. The continent is for the Peer to trace.</p>
-                            <p>BentoBoxDS is a primary implementation of the Health Oracle Protocol (HOP), an open-source substrate designed for local-first, peer-to-peer life. This is an architecture of participation; peers can couple new experiences directly into the environment by utilizing the Skeleton Documentation and testing metabolic logic within the HOP Playground.</p>
-                            <p>Beyond the desktop, the vision involves shrinking the HOP-shim to inhabit mobile apps and tiny devices. Through this Melding process, hardware like vagus-straps or sensing-skin will feed live data into the local SafeFlow-ECS, transforming the BentoBox into a portable, biological compass that keeps the pulse in phase with the Heli-Sync wherever the Peer travels.</p>
+                            <p>Participation in BentoBoxDS generates a peer and community experiences on the fly—assembling interfaces, local logic, and biological feedback in real time as an active practice of health.</p>
+
+                            <p>Here is how the pillars and sequence align in daily life:</p>
+
+                            <p>1. Story through Conduction — The Spark of Intent
+
+                                A peer in a coastal bioregion wakes to the cool dampness of early autumn and feels a subtle shift in morning vitality. Through conduction—using tiny light and skin sensors alongside life-strap narratives—the peer witnesses and records raw biological signals and ambient exoCues of morning sunlight, room temperature, and local humidity.
+
+                                    The Sequence: Story (capturing qualitative intent and narrative context).
+
+                                    The Pillar: Conduction (physical sensing through tiny edge devices touching the world).</p>
+
+                            <p>2. Interplay through Besearch Cycles — The Living Weaver
+
+                                BentoBoxDS ingests the life-strap narrative and environmental exoCues into the HOP Playground. The HeliClock grounds the light spectrum readings into the solar day cycle, while SafeFlow-ECS couples local biological components. Through active besearch cycles, the local resonancePulse re-weights resonAgents, weaving personal intent with verified Cues shared across the local watershed community.
+
+                                    The Sequence: Interplay (collaboratively testing, coupling, and refining logic).
+
+                                    The Pillar: Besearch Cycles (the living inquiry engine setting dynamic network weights).</p>
+
+                            <p>3. Emulation into Attunement — Live Realization on the Fly
+
+                                BentoBoxDS dynamically composes a custom, real-time interface on the fly—presenting an attuned morning breath and light routine tailored precisely to that hour's bioelectric state. As the peer moves through the routine, conduction instruments measure live heart rate variability shifts. ReasonanceLearning updates local weights, and the newly verified Cue diffuses gently through hop-osmosis to nourish the entire community network.
+
+                                    The Sequence: Emulation (generating custom software and biological experience in real time).
+
+                                    The Pillar: Attunement (live bioelectric harmony across cell, peer, and bioregion).</p>
+
+                            <p></p>
                         </div>
                     </section>
                 </div>

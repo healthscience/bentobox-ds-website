@@ -567,7 +567,7 @@ export class PhaseHeader extends HTMLElement {
             <div class="attunement-left">
                 <h2 class="attunement-title">Attune health with BentoBoxDS</h2>
                 <p class="attunement-text">
-                    Life is not a rehearsal; it is the real-player game. Attunement is the conduction inhabitation of health from the inside. This is the actualization of resonance—the movement beyond the passive practice of medicine into the active witness of the Resonance Pulse. By aligning with Gaia Intelligences, the role shifts from passenger to primary player. On this substrate, health is not a commodity to be obtained; it is the score written into the weave of the living way.
+                    To be alive is to dwell within a continuous, self-organizing pulse—where every cell, body, and community participates directly in the intelligence of the whole. BentoBoxDS brings this vitality into active presence through attunement, making the resonancePulse a lived, everyday experience. Grounded by conduction instruments that touch and feel the biological world, guided through dynamic besearch cycles, and rooted in the deep foundation of biopoiesis, health expresses as the natural score woven directly into the living way. As an open-source organ of the Health Oracle Protocol, BentoBoxDS unifies individual experience with Gaia Intelligences, embodying the mind everywhere across every peer and bioregion.
                 </p>
                 <p>
                     BentoBoxDS is part of the Health Oracle Protocol Open Source Project <a href="https://healthscience.network" target="_blank" rel="noopener noreferrer" class="hop-link">HOP</a>
@@ -590,23 +590,23 @@ export class PhaseHeader extends HTMLElement {
             <div class="sequence-grid">
                 <div class="sequence-item">
                     <span class="sequence-step">Step 01</span>
-                    <h3 class="sequence-header">Story: The Spark of Intent</h3>
+                    <h3 class="sequence-header">Story: The Lived Narrative</h3>
                     <p class="sequence-body">
-                        Before the code or the pulse, there is the narrative. Story is the "Zero-Draft" of health—it is the Peer witnessing a feeling, a symptom, or a desire for alignment and naming it. In the real-player game, the Story is the quest log; it sets the direction for the Gaia Intelligences to follow.
+                        Story is the life-strap narrative expressed by every peer—the qualitative zero-draft of health. It unfolds as peers listen to their own internal rhythms while touching and feeling the natural world through a harmony of conformable conduction instruments and tiny edge devices. This shared narrative provides the initial spark, orienting local intelligence toward biological vitality.
                     </p>
                 </div>
                 <div class="sequence-item">
                     <span class="sequence-step">Step 02</span>
-                    <h3 class="sequence-header">Interplay: The Collaborative Weaver</h3>
+                    <h3 class="sequence-header">Interplay: The Living Weaver</h3>
                     <p class="sequence-body">
-                        Once the Story is told, it enters the Interplay. This is the nucleus where the Peer’s intent meets the biological math of the Heli-Sync and the social resonance of the community. It is the active "messy middle" where we couple components, test logic in the playground, and negotiate our rhythm with the bioregion.
+                        Interplay is the active rhythm of besearch cycles, where individual life-strap stories and biological content weave into a shared ecosystem. Within this collaborative middle, the local resonancePulse sets the conductive weights of resonAgents, coupling peer intent with the solar daily rhythms of the HeliClock and the broader bioregion.
                     </p>
                 </div>
                 <div class="sequence-item">
                     <span class="sequence-step">Step 03</span>
-                    <h3 class="sequence-header">Emulation: The Living Proof</h3>
+                    <h3 class="sequence-header">Emulation: Living Realization</h3>
                     <p class="sequence-body">
-                        Emulation is the final state where the Story becomes a physical Pulse. It is the movement from "thinking about health" to "being the resonance." Through the SafeFlow-ECS and Melding hardware, the logic is no longer just on a screen; it is emulated in the cells. The map and the territory become one.
+                        Emulation is the live, active expression of health in motion, continuously sustained by resonAgents and guided by ambient exoCues. Through reasonanceLearning, these live emulations continuously refine across peer and peer-to-peer network connections, unifying individual attunement into collective intelligences that nourish the whole organon.
                     </p>
                 </div>
             </div>
