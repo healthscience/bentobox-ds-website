@@ -647,9 +647,9 @@ export class PhaseHeader extends HTMLElement {
         const shaHash = this.shadowRoot.getElementById('hash-sha256');
 
         const osData = {
-            linux: { title: 'BentoBoxDS for Linux', hash: 'sha256:7422ef1af8d9ffbf0d3b410fd5422c50cb07b695bd983a6b8457f0338f8fad8d', link: 'https://github.com/healthscience/bentoboxds-desktop/releases/download/v0.7.30/bentoboxds-0.7.30.AppImage' },
+            linux: { title: 'BentoBoxDS for Linux', hash: 'sha256:b0490231d34253eb2d201faabde8f9e0d7dec8ebbed43e8654595108486b2c04', link: 'https://github.com/healthscience/bentoboxds-desktop/releases/download/v0.7.84/bentoboxds-0.7.84.AppImage' },
             macos: { title: 'BentoBoxDS for macOS', hash: 'testflight - ask for invite', link: '' },
-            windows: { title: 'BentoBoxDS for Windows', hash: 'sha256:cc1acfc5f91a51ae42fa7e88ff0194d8d70805e0eb8a9bb791520617da4dbd8b', link: 'https://github.com/healthscience/bentoboxds-desktop/releases/download/v0.7.31/bentoboxds-0.7.31-setup.exe' }
+            windows: { title: 'BentoBoxDS for Windows', hash: 'sha256:67faad8a1dce591b042f0c19f89c3e1d2b1b0e4e177c8baa5fa18cb2227299ad', link: 'https://github.com/healthscience/bentoboxds-desktop/releases/download/v0.7.85/bentoboxds-0.7.85-setup.exe' }
         };
 
         this.shadowRoot.querySelectorAll('.substrate-item').forEach(item => {
